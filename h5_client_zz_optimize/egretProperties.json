@@ -1,35 +1,38 @@
 {
-	"native": {
-		"path_ignore": []
-	},
-	"publish": {
-		"web": 0,
-		"native": 1,
-		"path": "bin-release"
-	},
-	"egret_version": "5.0.15",
-	"modules": [
-		{
-			"name": "egret"
-		},
-		{
-			"name": "eui"
-		},
-		{
-			"name": "res"
-		},
-		{
-			"name": "game"
-		},
-		{
-			"name": "socket"
-		},
-		{
-			"name": "tween"
-		},
-		{
-			"name": "jszip",
-			"path": "../extendLibrary/jszipEgret"
-		}
-	]
+  "engineVersion": "5.2.13",
+  "compilerVersion": "5.2.13",
+  "template": {},
+  "target": {
+    "current": "web"
+  },
+  "modules": [
+    {
+      "name": "egret"
+    },
+    {
+      "name": "eui"
+    },
+    {
+      "name": "assetsmanager"
+    },
+    {
+      "name": "tween"
+    },
+    {
+      "name": "game"
+    },
+    {
+      "name": "promise"
+    },
+    {
+      "name": "jszip",
+      "path": "../extendLibrary/jszipEgret"
+    }
+  ],
+  "targets": {
+    "android": {
+      "appname": "StudyText",
+      "packagename": "com.adair"
+    }
+  }
 }

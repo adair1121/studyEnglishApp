@@ -284,7 +284,6 @@ class MovieClip extends egret.MovieClip {
 
 		if (tempList.length == 0) {
 			delete MovieClip.displayList[hashCode];
-			ResourceMgr.ins().disposeResTime(hashCode);
 		}
 	}
 }

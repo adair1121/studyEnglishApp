@@ -1,18 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  Copyright (c) 2014-present, Egret Technology.
 //  All rights reserved.
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
 //
-//	 * Redistributions of source code must retain the above copyright
-//	   notice, this list of conditions and the following disclaimer.
-//	 * Redistributions in binary form must reproduce the above copyright
-//	   notice, this list of conditions and the following disclaimer in the
-//	   documentation and/or other materials provided with the distribution.
-//	 * Neither the name of the Egret nor the
-//	   names of its contributors may be used to endorse or promote products
-//	   derived from this software without specific prior written permission.
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
 //
 //  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
 //  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
@@ -27,25 +27,25 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class LoadingUI extends egret.Sprite {
+class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
 
-	public constructor() {
-		super();
-		this.createView();
-	}
+    public constructor() {
+        super();
+        this.createView();
+    }
 
-	private textField:egret.TextField;
+    private textField: egret.TextField;
 
-	private createView():void {
-		this.textField = new egret.TextField();
-		this.addChild(this.textField);
-		this.textField.y = 300;
-		this.textField.width = 580;
-		this.textField.height = 100;
-		this.textField.textAlign = "center";
-	}
+    private createView(): void {
+        this.textField = new egret.TextField();
+        this.addChild(this.textField);
+        this.textField.y = 300;
+        this.textField.width = 480;
+        this.textField.height = 100;
+        this.textField.textAlign = "center";
+    }
 
-	public setProgress(current, total):void {
-		this.textField.text = "Loading..." + current + "/" + total;
-	}
+    public onProgress(current: number, total: number): void {
+        this.textField.text = `Loading...${current}/${total}`;
+    }
 }

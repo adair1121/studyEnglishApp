@@ -86,7 +86,7 @@ window.onerror = function (...info: any[]) {
 	//有报错，且版本号不一致就刷新游戏
 	window["getClientVersion"]((ver) => {
 		let v = parseInt(ver) || 0;
-		if (v === LocationProperty.gameVersion || v === 0) {
+		if (v === 1 || v === 0) {
 		} else {
 			location.reload();
 		}

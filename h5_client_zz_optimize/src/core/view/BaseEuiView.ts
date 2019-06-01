@@ -134,7 +134,7 @@ class BaseEuiView extends BaseView implements IBaseView {
         TimerManager.ins().removeAll(this);
         ViewManager.ins().destroy(this.hashCode);
         if (destroyUI) {
-            ResourceMgr.ins().destroyWin();
+            // ResourceMgr.ins().destroyWin();
         }
     }
 

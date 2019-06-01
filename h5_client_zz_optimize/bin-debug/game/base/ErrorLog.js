@@ -83,7 +83,7 @@ window.onerror = function () {
     //有报错，且版本号不一致就刷新游戏
     window["getClientVersion"](function (ver) {
         var v = parseInt(ver) || 0;
-        if (v === LocationProperty.gameVersion || v === 0) {
+        if (v === 1 || v === 0) {
         }
         else {
             location.reload();
