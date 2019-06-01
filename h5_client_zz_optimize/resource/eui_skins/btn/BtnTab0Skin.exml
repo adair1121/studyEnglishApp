@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="BtnTab0Skin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="120" height="48" width.down="120" width.up="115" height.up="48" height.down="48" width.disabled="114">
+	<e:Image  touchEnabled="false" bottom.down="0" x.down="0" source.down="yeqian2" visible.down="false" scale9Grid="19,6,50,18" left.down="0" right.down="0" top.down="0" source="yeqian2" source.up="yeqian2" left.up="0" top.up="3" right.up="-5" bottom.up="-3" left.disabled="0" top.disabled="3" bottom.disabled="-3" right.disabled="-6"/>
+	<e:Image y.disabled="-1" y.down="0" x.up="0" bottom.up="0" visible.disabled="false" x.down="0" touchEnabled="false" source.up="yeqian1" visible.up="false" scale9Grid="15,5,58,22" left="0" right="0" top="0" bottom="0" source="yeqian1" source.down="yeqian1"/>
+	<e:Label id="labelDisplay" size="20" verticalAlign="middle" textAlign="center" x.up="5" touchEnabled="false" y.down="14" x.disabled="8" y.disabled="1"  horizontalCenter.disabled="0.5" text="{data}" bold="true" verticalCenter.disabled="3" horizontalCenter="0" textColor="0xffd97f" textColor.down="0xffd97f" verticalCenter.up="-1" x.down="32" horizontalCenter.up="0.5" textColor.up="0xffd97f" textColor.disabled="0x8e8e8e"/>
+</e:Skin>

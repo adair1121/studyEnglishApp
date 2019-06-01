@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MainSceneSkin" width="1024" height="768" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image id="bg" source="login_kuang_png" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

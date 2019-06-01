@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>StudyEnglish</title>
+        <link href="favicon.ico" rel="shortcut icon"/>
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+        <META HTTP-EQUIV="Expires" CONTENT="0">
+        <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no , viewport-fit=cover"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="full-screen" content="true"/>
+        <meta name="screen-orientation" content="landscape"/>
+        <meta name="x5-fullscreen" content="true"/>
+        <meta name="360-fullscreen" content="true"/>
+        <style>
+            html,body {
+                -ms-touch-action: none;
+                background: url("resource/loading/loading.jpg") no-repeat;
+                background-size: cover;
+                background-position:70% 50%;
+                padding: 0;
+                border: 0;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body >
+        <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
+            data-entry-class="Main"
+            data-orientation="auto"
+            data-scale-mode="landscape"
+            data-frame-rate="30"
+            data-content-width="1024"
+            data-content-height="768"
+            data-multi-fingered="2"
+            data-show-fps="false" data-show-log="false"
+            data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+        </div>
+        <script>
+            var url=document.location.search;
+            var arrayParamsA=new Array();
+            var arrayParamsB=new Array();
+            var mapParams;
+            var wingParams=9;
+            arrayParamsA=url.split("?");
+            if(arrayParamsA.length>1)
+            {
+                arrayParamsA=arrayParamsA[1].split("&");
+                for(var i=0;i<arrayParamsA.length;i++){
+                arrayParamsB=arrayParamsA[i].split("=");
+                if(arrayParamsB[0]=="map"){
+                    //mapParams=arrayParamsB[1];
+                }else if(arrayParamsB[0]=="wing"){
+                    wingParams=arrayParamsB[1];
+                }
+                }
+            }
+            wingParams>9?9:wingParams;
+            wingParams<0?0:wingParams;
+            var replaceBg=function()
+            {
+               
+            }
+            replaceBg();
+            var loadScript = function (list, callback) {
+                var loaded = 0;
+                var loadNext = function () {
+                    loadSingleScript(list[loaded], function () {
+                        loaded++;
+                        if (loaded >= list.length) {
+                            callback();
+                        }
+                        else {
+                            loadNext();
+                        }
+                    })
+                };
+                loadNext();
+            };
+
+            var loadSingleScript = function (src, callback) {
+                var s = document.createElement('script');
+                s.async = false;
+                s.src = src;
+                s.addEventListener('load', function () {
+                    s.parentNode.removeChild(s);
+                    s.removeEventListener('load', arguments.callee, false);
+                    callback();
+                }, false);
+                document.body.appendChild(s);
+            };
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './manifest.json?v=' + Math.random(), true);
+            xhr.addEventListener("load", function () {
+                var manifest = JSON.parse(xhr.response);
+                var list = manifest.initial;
+                list = list.concat(manifest.game);
+                loadScript(list, function () {
+                    
+                    
+                    egret.runEgret({ renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor:function(context) {
+                        var backingStore = context.backingStorePixelRatio ||
+                            context.webkitBackingStorePixelRatio ||
+                            context.mozBackingStorePixelRatio ||
+                            context.msBackingStorePixelRatio ||
+                            context.oBackingStorePixelRatio ||
+                            context.backingStorePixelRatio || 1;
+                        return (window.devicePixelRatio || 1) / backingStore;
+                    }});
+                });
+            });
+            xhr.send(null);
+
+            function closeSocket() {
+                Main.closesocket();
+            }
+            function isShowGameDesktop(){
+
+            }
+            function saveGameDesktop(){
+
+            }
+            function getClientVersion(callback){
+                if(callback) callback(0);
+            }
+            function removeGif(){
+                
+            }
+        </script>
+    </body>
+
+</html>

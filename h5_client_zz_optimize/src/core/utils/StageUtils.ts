@@ -1,0 +1,122 @@
+class StageUtils extends BaseClass {
+	//UIStage单例
+	private static _uiStage:eui.UILayer;
+	private static lastOrientation:string|number;
+	/**
+	 * 构造函数
+	 */
+	public constructor() {
+		super();
+
+		if (StageUtils._uiStage == null) {
+			StageUtils._uiStage = new eui.UILayer();
+			StageUtils._uiStage.touchEnabled = false;
+			StageUtils._uiStage.percentHeight = 100;
+			StageUtils._uiStage.percentWidth = 100;
+			this.getStage().addChild(StageUtils._uiStage);
+		}
+	}
+
+
+	public static ins():StageUtils{
+		return super.ins() as StageUtils;
+	}
+	/**
+	 * 获取游戏的高度
+	 * @returns {number}
+	 */
+	public getHeight():number {
+		return this.getStage().stageHeight;
+	}
+
+	/**
+	 * 获取游戏宽度
+	 * @returns {number}
+	 */
+	public getWidth():number {
+		return this.getStage().stageWidth;
+	}
+
+	/**
+	 * 指定此对象的子项以及子孙项是否接收鼠标/触摸事件
+	 * @param value
+	 */
+	public setTouchChildren(value:boolean):void {
+		this.getStage().touchChildren = value;
+	}
+
+	/**
+	 * 设置同时可触发几个点击事件，默认为2
+	 * @param value
+	 */
+	public setMaxTouches(value:number):void {
+		this.getStage().maxTouches = value;
+	}
+
+	/**
+	 * 设置帧频
+	 * @param value
+	 */
+	public setFrameRate(value:number):void {
+		this.getStage().frameRate = value;
+	}
+
+	/**
+	 * 设置适配方式
+	 * @param value
+	 */
+	public setScaleMode(value:string):void {
+		this.getStage().scaleMode = value;
+	}
+
+	/**
+	 * 获取游戏Stage对象
+	 * @returns {egret.MainContext}
+	 */
+	public getStage():egret.Stage {
+		return egret.MainContext.instance.stage;
+	}
+	
+	/**
+	 * 获取唯一UIStage
+	 * @returns {eui.UILayer}
+	 */
+	public getUIStage():eui.UILayer {
+		return StageUtils._uiStage;
+	}
+	public static getScaleMode():string{
+		if(StageUtils.isIphoneX()){
+			// StageUtils.ins().getStage().setContentSize(375,812);
+			return egret.StageScaleMode.FIXED_HEIGHT;
+		}
+		let w: number = window.innerHeight / window.innerWidth;
+		let minSizeProb = 1.4;
+		let maxSizeProb = 1.8;
+		let scaleMode = "";
+		if(w <= minSizeProb) {
+			scaleMode = egret.StageScaleMode.FIXED_WIDTH;
+		} else if (w > minSizeProb && w < maxSizeProb) {
+			scaleMode = egret.StageScaleMode.FIXED_HEIGHT;
+		}
+		return scaleMode;
+	}
+	private static isIphoneX():boolean{
+		//横版需要反过来
+		return window.innerHeight==375 && window.innerWidth==812;
+	}
+	public static init():void{
+		this.changeStageSize();
+		window.addEventListener("resize", this.changeStageSize);
+	}
+	public static changeStageSize(): void {
+		egret.setTimeout(()=>{
+			var scaleMode = StageUtils.getScaleMode();
+			if(this.lastOrientation != window.orientation) {
+				document.body.style.width = "100%";
+				this.lastOrientation = window.orientation;
+			}
+			StageUtils.ins().getStage().scaleMode = scaleMode;
+		},this,500);
+	}
+	
+}

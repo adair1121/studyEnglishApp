@@ -1,0 +1,137 @@
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+//显示基类,用于增加一些显示相关的共有函数
+var BaseView = (function (_super) {
+    __extends(BaseView, _super);
+    function BaseView() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    /**
+     * 监听事件
+     * @param {Function} func 监听的事件标记
+     * @param {Function} myfunc 监听响应的函数
+     * @param callobj 是否立刻执行响应函数一次
+     */
+    BaseView.prototype.observe = function (func, myfunc, callobj) {
+        if (callobj === void 0) { callobj = undefined; }
+        MessageCenter.addListener(func, myfunc, this, callobj);
+    };
+    BaseView.prototype.removeObserve = function () {
+        MessageCenter.ins().removeAll(this);
+    };
+    BaseView.prototype.addTouchEvent = function (obj, func, isStartEffect) {
+        if (isStartEffect === void 0) { isStartEffect = false; }
+        this.addEvent(egret.TouchEvent.TOUCH_TAP, obj, func);
+        if (isStartEffect) {
+            obj.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onBeginTouch, this);
+            obj.addEventListener(egret.TouchEvent.TOUCH_END, this.onEndTouch, this);
+            obj.addEventListener(egret.TouchEvent.TOUCH_CANCEL, this.onEndTouch, this);
+            obj.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onEndTouch, this);
+        }
+    };
+    BaseView.prototype.onBeginTouch = function (evt) {
+        if (evt.target) {
+            this.changeFilter(evt.target);
+        }
+    };
+    BaseView.prototype.onEndTouch = function (evt) {
+        if (evt.target && evt.target.filters) {
+            evt.target.filters = [];
+        }
+    };
+    BaseView.prototype.changeFilter = function (obj) {
+        var colorMatrix = [
+            0.3, 0.6, 0, 0, 0,
+            0.3, 0.6, 0, 0, 0,
+            0.3, 0.6, 0, 0, 0,
+            0, 0, 0, 1, 0
+        ];
+        var colorFlilter = new egret.ColorMatrixFilter(colorMatrix);
+        obj.filters = [colorFlilter];
+    };
+    BaseView.prototype.addTouchEndEvent = function (obj, func) {
+        this.addEvent(egret.TouchEvent.TOUCH_END, obj, func);
+    };
+    BaseView.prototype.addChangeEvent = function (obj, func) {
+        var _this = this;
+        if (obj && obj instanceof eui.TabBar) {
+            this.addEvent(egret.TouchEvent.CHANGE, obj, function () {
+                var param = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    param[_i] = arguments[_i];
+                }
+                // SoundUtil.ins().playEffect(SoundUtil.WINDOW);
+                func.call.apply(func, [_this].concat(param));
+            });
+        }
+        else {
+            this.addEvent(egret.TouchEvent.CHANGE, obj, func);
+        }
+    };
+    /**hide 除了第一个页签意外的页签显示 */
+    BaseView.prototype.hidePageFunc = function (viewStack) {
+        var len = viewStack.$children.length;
+        for (var i = 1; i < len; i++) {
+            if (viewStack.$children.length >= 2) {
+                var item = viewStack.getChildAt(1);
+                viewStack.removeChild(item);
+            }
+        }
+    };
+    BaseView.prototype.addChangingEvent = function (obj, func) {
+        this.addEvent(egret.TouchEvent.CHANGING, obj, func);
+    };
+    BaseView.prototype.addEvent = function (ev, obj, func) {
+        if (!obj) {
+            debug.error("\u4E0D\u5B58\u5728\u7ED1\u5B9A\u5BF9\u8C61");
+            return;
+        }
+        obj.addEventListener(ev, func, this);
+    };
+    BaseView.prototype.removeTouchEvent = function (obj, func) {
+        if (obj) {
+            obj.removeEventListener(egret.TouchEvent.TOUCH_TAP, func, this);
+            if (obj.hasEventListener("touchBegin")) {
+                obj.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onBeginTouch, this);
+            }
+            if (obj.hasEventListener("touchEnd")) {
+                obj.removeEventListener(egret.TouchEvent.TOUCH_END, this.onEndTouch, this);
+            }
+            if (obj.hasEventListener("touchCancel")) {
+                obj.removeEventListener(egret.TouchEvent.TOUCH_CANCEL, this.onEndTouch, this);
+            }
+            if (obj.hasEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE)) {
+                obj.removeEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE, this.onEndTouch, this);
+            }
+        }
+    };
+    BaseView.prototype.$onClose = function () {
+        var fun = function (tar) {
+            for (var i = 0; i < tar.numChildren; i++) {
+                var obj = tar.getChildAt(i);
+                if (obj instanceof BaseView) {
+                    obj.$onClose();
+                }
+                else if (obj instanceof egret.DisplayObjectContainer) {
+                    fun(obj);
+                }
+            }
+        };
+        fun(this);
+        this.removeObserve();
+    };
+    return BaseView;
+}(eui.Component));
+__reflect(BaseView.prototype, "BaseView");
+//# sourceMappingURL=BaseView.js.map

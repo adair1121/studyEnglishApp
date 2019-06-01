@@ -1,0 +1,25 @@
+{
+	"groups": [
+		{
+			"keys": "login_kuang_png,bar5_png,bar2_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "loading/login_kuang.png",
+			"type": "image",
+			"name": "login_kuang_png"
+		},
+		{
+			"url": "loading/bar5.png",
+			"type": "image",
+			"name": "bar5_png"
+		},
+		{
+			"url": "loading/bar2.png",
+			"type": "image",
+			"name": "bar2_png"
+		}
+	]
+}
