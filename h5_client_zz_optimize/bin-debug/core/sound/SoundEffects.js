@@ -50,6 +50,9 @@ var SoundEffects = (function (_super) {
      * @param sound
      */
     SoundEffects.prototype.playSound = function (sound) {
+        if (this._soundChannel) {
+            this._soundChannel.stop();
+        }
         this._soundChannel = sound.play(0, 1);
         this._soundChannel.volume = this._volume;
     };

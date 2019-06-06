@@ -41,6 +41,9 @@ class SoundEffects extends BaseSound {
 	 * @param sound
 	 */
 	private playSound(sound:egret.Sound):void {
+		if(this._soundChannel){
+			this._soundChannel.stop();
+		}
 		this._soundChannel = sound.play(0, 1);
 		this._soundChannel.volume = this._volume;
 	}
