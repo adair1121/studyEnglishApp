@@ -166,6 +166,7 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createGameScene = function () {
+        StageUtils.init();
         RES.getResByUrl(CFG_DIR + "config.zip", function (data) {
             JSZip.loadAsync(data).then(function (zipdata) {
                 return zipdata.file('config.json').async('text');

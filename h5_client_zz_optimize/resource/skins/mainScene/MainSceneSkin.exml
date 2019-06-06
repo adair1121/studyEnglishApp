@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MainSceneSkin" width="1024" height="768" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="bg" source="login_kuang_png" horizontalCenter="0" verticalCenter="0"/>
+<e:Skin class="MainSceneSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group left="0" top="0" right="0" bottom="0">
+		<e:Image source="main_bg_jpg" left="0" top="0" right="0" bottom="0"/>
+		<e:Button id="recordButton" label="记单词测试按钮" anchorOffsetX="0" width="328.79" horizontalCenter="12.5" top="203" anchorOffsetY="0" height="74"/>
+	</e:Group>
 </e:Skin>

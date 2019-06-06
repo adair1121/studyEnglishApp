@@ -8,41 +8,48 @@ var GlobalConfig = (function () {
         this.config = data;
     };
     GlobalConfig.parserData = function () {
-        // if (this.init) return;
-        // if (!this.config) return;
-        // for (let key in this.config) {
-        // 	let value = this.config[key];
-        // 	let objCls = egret.getDefinitionByName(key);
-        // 	if (objCls) {
-        // 		//用来存储配置一个默认实例
-        // 		let objKey = `_obj${key}`;
-        // 		this[objKey] = new objCls();
-        // 		//用来确认配置表是否已经设置 __proto__ 为 储存的实例（this[objKey])
-        // 		let boolKey = `_bool${key}`;
-        // 		this[boolKey] = false;
-        // 		//将真正的配置存放在this[newKey]中
-        // 		let newKey = `_${key}_`;
-        // 		//创建key引用配置
-        // 		Object.defineProperty(this, key, {
-        // 			get: function () {
-        // 				let obj = this[newKey];
-        // 				if (this[boolKey]) return obj;
-        // 				let proto = this[objKey];
-        // 				this.parseKeys(obj, proto, GlobalConfig.keys[key] || 0);
-        // 				this[boolKey] = true;
-        // 				return obj;
-        // 			},
-        // 			set: function (val) {
-        // 				this[newKey] = val;
-        // 			}
-        // 		});
-        // 	}
-        // 	//赋值
-        // 	this[key] = value;
-        // }
-        // //数据初始完毕
-        // this.init = true;
-        // this.config = null;
+        if (this.init)
+            return;
+        if (!this.config)
+            return;
+        var _loop_1 = function (key) {
+            var value = this_1.config[key];
+            var objCls = egret.getDefinitionByName(key);
+            if (objCls) {
+                //用来存储配置一个默认实例
+                var objKey_1 = "_obj" + key;
+                this_1[objKey_1] = new objCls();
+                //用来确认配置表是否已经设置 __proto__ 为 储存的实例（this[objKey])
+                var boolKey_1 = "_bool" + key;
+                this_1[boolKey_1] = false;
+                //将真正的配置存放在this[newKey]中
+                var newKey_1 = "_" + key + "_";
+                //创建key引用配置
+                Object.defineProperty(this_1, key, {
+                    get: function () {
+                        var obj = this[newKey_1];
+                        if (this[boolKey_1])
+                            return obj;
+                        var proto = this[objKey_1];
+                        this.parseKeys(obj, proto, GlobalConfig.keys[key] || 0);
+                        this[boolKey_1] = true;
+                        return obj;
+                    },
+                    set: function (val) {
+                        this[newKey_1] = val;
+                    }
+                });
+            }
+            //赋值
+            this_1[key] = value;
+        };
+        var this_1 = this;
+        for (var key in this.config) {
+            _loop_1(key);
+        }
+        //数据初始完毕
+        this.init = true;
+        this.config = null;
     };
     GlobalConfig.parseKeys = function (obj, proto, key) {
         if (key == 0) {
@@ -53,6 +60,9 @@ var GlobalConfig = (function () {
                 this.parseKeys(obj[i], proto, key - 1);
             }
         }
+    };
+    GlobalConfig.keys = {
+        "RecordConfig": 1,
     };
     return GlobalConfig;
 }());

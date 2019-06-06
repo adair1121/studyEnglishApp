@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,login_kuang_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png",
 			"name": "preload"
 		}
 	],
@@ -137,19 +137,44 @@
 			"name": "description_json"
 		},
 		{
-			"url": "loading/login_bg.png",
-			"type": "image",
-			"name": "login_bg_png"
-		},
-		{
-			"url": "loading/login_kuang.png",
-			"type": "image",
-			"name": "login_kuang_png"
-		},
-		{
 			"url": "cfg/config.zip",
 			"type": "bin",
 			"name": "config_zip"
+		},
+		{
+			"url": "res/main/main_bg.jpg",
+			"type": "image",
+			"name": "main_bg_jpg"
+		},
+		{
+			"url": "res/main/main_bg_bottom.jpg",
+			"type": "image",
+			"name": "main_bg_bottom_jpg"
+		},
+		{
+			"name": "main_bg2_jpg",
+			"type": "image",
+			"url": "res/main/main_bg.jpg"
+		},
+		{
+			"name": "main_bg_bottom2_jpg",
+			"type": "image",
+			"url": "res/main/main_bg_bottom.jpg"
+		},
+		{
+			"name": "top_bg_jpg",
+			"type": "image",
+			"url": "res/main/top_bg.jpg"
+		},
+		{
+			"name": "btn_exit_png",
+			"type": "image",
+			"url": "res/public/button/btn_exit.png"
+		},
+		{
+			"name": "main_white_block_png",
+			"type": "image",
+			"url": "res/main/main_white_block.png"
 		}
 	]
 }

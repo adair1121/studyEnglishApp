@@ -86,23 +86,23 @@ var StageUtils = (function (_super) {
     StageUtils.getScaleMode = function () {
         if (StageUtils.isIphoneX()) {
             // StageUtils.ins().getStage().setContentSize(375,812);
-            return egret.StageScaleMode.FIXED_HEIGHT;
+            return egret.StageScaleMode.FIXED_WIDTH;
         }
         var w = window.innerHeight / window.innerWidth;
         var minSizeProb = 1.4;
         var maxSizeProb = 1.8;
         var scaleMode = "";
         if (w <= minSizeProb) {
-            scaleMode = egret.StageScaleMode.FIXED_WIDTH;
+            scaleMode = egret.StageScaleMode.FIXED_HEIGHT;
         }
         else if (w > minSizeProb && w < maxSizeProb) {
-            scaleMode = egret.StageScaleMode.FIXED_HEIGHT;
+            scaleMode = egret.StageScaleMode.FIXED_WIDTH;
         }
         return scaleMode;
     };
     StageUtils.isIphoneX = function () {
         //横版需要反过来
-        return window.innerHeight == 375 && window.innerWidth == 812;
+        return window.innerHeight == 812 && window.innerWidth == 375;
     };
     StageUtils.init = function () {
         this.changeStageSize();
@@ -113,7 +113,7 @@ var StageUtils = (function (_super) {
         egret.setTimeout(function () {
             var scaleMode = StageUtils.getScaleMode();
             if (_this.lastOrientation != window.orientation) {
-                document.body.style.width = "100%";
+                document.body.style.height = "100%";
                 _this.lastOrientation = window.orientation;
             }
             StageUtils.ins().getStage().scaleMode = scaleMode;

@@ -29,8 +29,11 @@
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",
 		"resource/eui_skins/VSliderSkin.exml",
+		"resource/skins/components/ClickReadItemSkin.exml",
+		"resource/skins/components/ClickReadSkin.exml",
 		"resource/skins/GameLoadingUISkin.exml",
-		"resource/skins/mainScene/MainSceneSkin.exml"
+		"resource/skins/mainScene/MainSceneSkin.exml",
+		"resource/skins/RecordSceneSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }

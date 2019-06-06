@@ -100,6 +100,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
+        StageUtils.init();
 		RES.getResByUrl(`${CFG_DIR}config.zip`, function(data){
 			JSZip.loadAsync(data).then((zipdata) => {
 				return zipdata.file('config.json').async('text');

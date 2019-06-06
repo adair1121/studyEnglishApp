@@ -87,22 +87,22 @@ class StageUtils extends BaseClass {
 	public static getScaleMode():string{
 		if(StageUtils.isIphoneX()){
 			// StageUtils.ins().getStage().setContentSize(375,812);
-			return egret.StageScaleMode.FIXED_HEIGHT;
+			return egret.StageScaleMode.FIXED_WIDTH;
 		}
 		let w: number = window.innerHeight / window.innerWidth;
 		let minSizeProb = 1.4;
 		let maxSizeProb = 1.8;
 		let scaleMode = "";
 		if(w <= minSizeProb) {
-			scaleMode = egret.StageScaleMode.FIXED_WIDTH;
-		} else if (w > minSizeProb && w < maxSizeProb) {
 			scaleMode = egret.StageScaleMode.FIXED_HEIGHT;
+		} else if (w > minSizeProb && w < maxSizeProb) {
+			scaleMode = egret.StageScaleMode.FIXED_WIDTH;
 		}
 		return scaleMode;
 	}
 	private static isIphoneX():boolean{
 		//横版需要反过来
-		return window.innerHeight==375 && window.innerWidth==812;
+		return window.innerHeight==812 && window.innerWidth==375;
 	}
 	public static init():void{
 		this.changeStageSize();
@@ -112,7 +112,7 @@ class StageUtils extends BaseClass {
 		egret.setTimeout(()=>{
 			var scaleMode = StageUtils.getScaleMode();
 			if(this.lastOrientation != window.orientation) {
-				document.body.style.width = "100%";
+				document.body.style.height = "100%";
 				this.lastOrientation = window.orientation;
 			}
 			StageUtils.ins().getStage().scaleMode = scaleMode;
