@@ -50,6 +50,14 @@ class SoundManager extends BaseClass {
 
 		this.effect.play(effectName);
 	}
+	/**
+	 * 停止音效
+	 */
+	public stopEffect():void{
+		if (!this.effectOn)
+			return;
+		this.effect.stop();
+	}
 
 	/**
 	 * 播放背景音乐
@@ -60,7 +68,7 @@ class SoundManager extends BaseClass {
 		if (!this.bgOn)
 			return;
 
-		this.bg.play(bgName);
+		// this.bg.play(bgName);
 	}
 
 	/**

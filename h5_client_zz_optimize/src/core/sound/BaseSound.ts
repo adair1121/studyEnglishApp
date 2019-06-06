@@ -39,20 +39,26 @@ class BaseSound {
 	 * @param key
 	 * @returns {egret.Sound}
 	 */
-	public getSound(key:string):egret.Sound {
-		let sound:egret.Sound = RES.getRes(key);
-		if (sound) {
-			if (this._cache[key]) {
-				this._cache[key] = egret.getTimer();
+	public getSound(key:string,callBackFunc:(sound)=>void,thisArg):void{
+		
+		RES.getResByUrl(key,(data)=>{
+			let sound:egret.Sound = data ;
+			if (sound) {
+				if (this._cache[key]) {
+					this._cache[key] = egret.getTimer();
+				}
+			} else {
+				if (this._loadingCache.indexOf(key) != -1) {
+					return null;
+				}
+				this._loadingCache.push(key);
+				RES.getResAsync(key, this.onResourceLoadComplete, this);
 			}
-		} else {
-			if (this._loadingCache.indexOf(key) != -1) {
-				return null;
+			if(callBackFunc && thisArg){
+				callBackFunc.call(thisArg,sound);
 			}
-			this._loadingCache.push(key);
-			RES.getResAsync(key, this.onResourceLoadComplete, this);
-		}
-		return sound;
+		},this,RES.ResourceItem.TYPE_SOUND);
+		
 	}
 
 	/**

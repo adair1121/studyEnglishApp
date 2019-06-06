@@ -203,9 +203,9 @@ class DisplayUtils {
 	 * @param effectName
 	 * @returns {string}
 	 */
-	public static getEffectPath(effectName: string): string {
-		return RES_DIR_EFF + effectName;
-	}
+	// public static getEffectPath(effectName: string): string {
+	// 	return RES_DIR_EFF + effectName;
+	// }
     /**滚动条滚动至底部 */
 	public static scrollerToBottom(scroller: eui.Scroller): void {
 		scroller.viewport.validateNow();

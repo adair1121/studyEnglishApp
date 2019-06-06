@@ -36,21 +36,26 @@ var BaseSound = (function () {
      * @param key
      * @returns {egret.Sound}
      */
-    BaseSound.prototype.getSound = function (key) {
-        var sound = RES.getRes(key);
-        if (sound) {
-            if (this._cache[key]) {
-                this._cache[key] = egret.getTimer();
+    BaseSound.prototype.getSound = function (key, callBackFunc, thisArg) {
+        var _this = this;
+        RES.getResByUrl(key, function (data) {
+            var sound = data;
+            if (sound) {
+                if (_this._cache[key]) {
+                    _this._cache[key] = egret.getTimer();
+                }
             }
-        }
-        else {
-            if (this._loadingCache.indexOf(key) != -1) {
-                return null;
+            else {
+                if (_this._loadingCache.indexOf(key) != -1) {
+                    return null;
+                }
+                _this._loadingCache.push(key);
+                RES.getResAsync(key, _this.onResourceLoadComplete, _this);
             }
-            this._loadingCache.push(key);
-            RES.getResAsync(key, this.onResourceLoadComplete, this);
-        }
-        return sound;
+            if (callBackFunc && thisArg) {
+                callBackFunc.call(thisArg, sound);
+            }
+        }, this, RES.ResourceItem.TYPE_SOUND);
     };
     /**
      * 资源加载完成

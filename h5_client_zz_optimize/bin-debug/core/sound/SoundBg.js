@@ -38,14 +38,14 @@ var SoundBg = (function (_super) {
      * @param effectName
      */
     SoundBg.prototype.play = function (effectName) {
-        if (this._currBg == effectName)
-            return;
-        this.stop();
-        this._currBg = effectName;
-        var sound = this.getSound(effectName);
-        if (sound) {
-            this.playSound(sound);
-        }
+        // if (this._currBg == effectName)
+        // 	return;
+        // this.stop();
+        // this._currBg = effectName;
+        // let sound:egret.Sound = this.getSound(effectName);
+        // if (sound) {
+        // 	this.playSound(sound);
+        // }
     };
     //主要是解决ios不播放的bug
     SoundBg.prototype.touchPlay = function () {

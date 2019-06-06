@@ -42,6 +42,14 @@ var SoundManager = (function (_super) {
         this.effect.play(effectName);
     };
     /**
+     * 停止音效
+     */
+    SoundManager.prototype.stopEffect = function () {
+        if (!this.effectOn)
+            return;
+        this.effect.stop();
+    };
+    /**
      * 播放背景音乐
      * @param key
      */
@@ -49,7 +57,7 @@ var SoundManager = (function (_super) {
         this.currBg = bgName;
         if (!this.bgOn)
             return;
-        this.bg.play(bgName);
+        // this.bg.play(bgName);
     };
     /**
      * 停止背景音乐

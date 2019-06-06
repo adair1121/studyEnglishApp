@@ -23,8 +23,6 @@ var ClickReadItem = (function (_super) {
         this.addTouchEvent(this.itemGroup, this.onClick, true);
     };
     ClickReadItem.prototype.onClick = function (evt) {
-        this.count += 1;
-        this.trans.visible = ((this.count % 2) == 0);
     };
     ClickReadItem.prototype.dataChanged = function () {
         if (!!this.data) {
@@ -33,12 +31,24 @@ var ClickReadItem = (function (_super) {
             this.audio = this.data.audio;
         }
     };
-    ClickReadItem.prototype.refreshItem = function (data) {
+    ClickReadItem.prototype.initialize = function (data) {
+        this.trans.visible = false;
+        this.count = 0;
+        this.refreshItem(data, "init");
+    };
+    ClickReadItem.prototype.refreshItem = function (data, str) {
+        if (str === void 0) { str = "refresh"; }
         for (var key in data) {
             if (this.enFont[key]) {
                 this.enFont[key] = data[key];
             }
         }
+        if (str == "refresh") {
+            this.count += 1;
+            this.trans.visible = ((this.count % 2) == 0);
+        }
+        SoundManager.ins().stopEffect();
+        SoundManager.ins().playEffect("" + MP3_DIR + this.audio);
     };
     ClickReadItem.prototype.distory = function () {
         this.removeTouchEvent(this.itemGroup, this.onClick);

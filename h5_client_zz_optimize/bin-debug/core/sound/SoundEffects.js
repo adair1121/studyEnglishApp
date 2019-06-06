@@ -18,16 +18,31 @@ var SoundEffects = (function (_super) {
      * 构造函数
      */
     function SoundEffects() {
-        return _super.call(this) || this;
+        var _this = _super.call(this) || this;
+        _this._loaded = false;
+        return _this;
     }
     /**
      * 播放一个音效
      * @param effectName
      */
     SoundEffects.prototype.play = function (effectName) {
-        var sound = this.getSound(effectName);
-        if (sound) {
-            this.playSound(sound);
+        var _this = this;
+        this._loaded = true;
+        this.getSound(effectName, function (sound) {
+            if (sound) {
+                _this._sound = sound;
+                _this.playSound(_this._sound);
+            }
+        }, this);
+    };
+    /**
+     * 停止一个音效
+     * @param effectName
+     */
+    SoundEffects.prototype.stop = function () {
+        if (this._soundChannel) {
+            this._soundChannel.stop();
         }
     };
     /**
@@ -35,8 +50,8 @@ var SoundEffects = (function (_super) {
      * @param sound
      */
     SoundEffects.prototype.playSound = function (sound) {
-        var channel = sound.play(0, 1);
-        channel.volume = this._volume;
+        this._soundChannel = sound.play(0, 1);
+        this._soundChannel.volume = this._volume;
     };
     /**
      * 设置音量

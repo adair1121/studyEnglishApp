@@ -4,7 +4,8 @@
  */
 class SoundEffects extends BaseSound {
 	private _volume:number;
-
+	private _sound:egret.Sound;
+	private _loaded = false;
 	/**
 	 * 构造函数
 	 */
@@ -17,19 +18,31 @@ class SoundEffects extends BaseSound {
 	 * @param effectName
 	 */
 	public play(effectName:string):void {
-		let sound:egret.Sound = this.getSound(effectName);
-		if (sound) {
-			this.playSound(sound);
+		this._loaded = true;
+		this.getSound(effectName,(sound)=>{
+			if (sound) {
+				this._sound = sound;
+				this.playSound(this._sound);
+			}
+		},this);
+	}
+	/**
+	 * 停止一个音效
+	 * @param effectName
+	 */
+	public stop():void {
+		if (this._soundChannel) {
+			this._soundChannel.stop();
 		}
 	}
-
+	private _soundChannel:egret.SoundChannel
 	/**
 	 * 播放
 	 * @param sound
 	 */
 	private playSound(sound:egret.Sound):void {
-		let channel:egret.SoundChannel = sound.play(0, 1);
-		channel.volume = this._volume;
+		this._soundChannel = sound.play(0, 1);
+		this._soundChannel.volume = this._volume;
 	}
 
 	/**

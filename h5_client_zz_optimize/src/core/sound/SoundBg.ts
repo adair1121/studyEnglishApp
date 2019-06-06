@@ -33,14 +33,14 @@ class SoundBg extends BaseSound {
 	 * @param effectName
 	 */
 	public play(effectName:string):void {
-		if (this._currBg == effectName)
-			return;
-		this.stop();
-		this._currBg = effectName;
-		let sound:egret.Sound = this.getSound(effectName);
-		if (sound) {
-			this.playSound(sound);
-		}
+		// if (this._currBg == effectName)
+		// 	return;
+		// this.stop();
+		// this._currBg = effectName;
+		// let sound:egret.Sound = this.getSound(effectName);
+		// if (sound) {
+		// 	this.playSound(sound);
+		// }
 	}
 
 	//主要是解决ios不播放的bug

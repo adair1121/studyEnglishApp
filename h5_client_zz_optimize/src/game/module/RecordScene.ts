@@ -1,11 +1,10 @@
 class RecordScene extends BaseEuiView{
 	private exitButton:eui.Image;
-	private dataRecord:eui.ArrayCollection;
-
 	private clickReadpanel:ClickRead;
-	private pageIndex:number = 8;
-	private pageData:any = {};
-	private totalPage:number = 0;
+	private pageNum:eui.Label;
+
+	public btn_left:eui.Image;
+	private btn_right:eui.Image;
 	public constructor() {
 		super();
 		this.skinName = "RecordSceneSkin"
@@ -15,27 +14,44 @@ class RecordScene extends BaseEuiView{
 	}
 	public open(...param: any[]): void {
 		this.addTouchEvent(this.exitButton,this.onTouch,true);
-		this.dataRecord = new eui.ArrayCollection();
-		
+		this.addTouchEvent(this.btn_left,this.onLeft,true);
+		this.addTouchEvent(this.btn_right,this.onRight,true);
 		let arr = [];
 		for(let key in GlobalConfig.RecordConfig){
 			arr.push(GlobalConfig.RecordConfig[key])
 		}
-		this.dataRecord.source = arr;
+		this.clickReadpanel.dataProvider(arr)
 
-		this.totalPage = (arr.length/this.pageIndex)>>0;
-
-		let count = 0;
-		for(let i:number = 0;i<arr.length;i++){
-			count +=1;
+		this.pageNum.text = this.clickReadpanel.m_curPage+"/"+this.clickReadpanel.m_pageNum;
+		this.refreshArrow();
+	}
+	private onLeft():void{
+		this.clickReadpanel.refreshData(-1);
+		this.refreshArrow();
+	}
+	private onRight():void{
+		this.clickReadpanel.refreshData(1);
+		this.refreshArrow();
+	}
+	private refreshArrow():void{
+		if(this.clickReadpanel.m_curPage >= this.clickReadpanel.m_pageNum){
+			this.btn_right.visible = false;
+			this.btn_left.visible = true;
+		}else if(this.clickReadpanel.m_curPage == 1){
+			this.btn_left.visible = false;
+			this.btn_right.visible = true;
+		}else{
+			this.btn_left.visible = this.btn_right.visible = true;
 		}
-		this.clickReadpanel.dataProvider(this.dataRecord)
+		this.pageNum.text = this.clickReadpanel.m_curPage+"/"+this.clickReadpanel.m_pageNum;
 	}
 	private onTouch(evt:egret.TouchEvent):void{
 		this.close();
 		ViewManager.ins().close(RecordScene);
 	}
 	public close(...param: any[]): void {
+		this.removeTouchEvent(this.btn_left,this.onLeft);
+		this.removeTouchEvent(this.btn_right,this.onRight);
 		this.removeTouchEvent(this.exitButton,this.onTouch);
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png,btn_left_png,btn_right_png",
 			"name": "preload"
 		}
 	],
@@ -152,29 +152,39 @@
 			"name": "main_bg_bottom_jpg"
 		},
 		{
-			"name": "main_bg2_jpg",
+			"url": "res/main/main_bg.jpg",
 			"type": "image",
-			"url": "res/main/main_bg.jpg"
+			"name": "main_bg2_jpg"
 		},
 		{
-			"name": "main_bg_bottom2_jpg",
+			"url": "res/main/main_bg_bottom.jpg",
 			"type": "image",
-			"url": "res/main/main_bg_bottom.jpg"
+			"name": "main_bg_bottom2_jpg"
 		},
 		{
-			"name": "top_bg_jpg",
+			"url": "res/main/top_bg.jpg",
 			"type": "image",
-			"url": "res/main/top_bg.jpg"
+			"name": "top_bg_jpg"
 		},
 		{
-			"name": "btn_exit_png",
+			"url": "res/public/button/btn_exit.png",
 			"type": "image",
-			"url": "res/public/button/btn_exit.png"
+			"name": "btn_exit_png"
 		},
 		{
-			"name": "main_white_block_png",
+			"url": "res/main/main_white_block.png",
 			"type": "image",
-			"url": "res/main/main_white_block.png"
+			"name": "main_white_block_png"
+		},
+		{
+			"url": "res/public/button/btn_left.png",
+			"type": "image",
+			"name": "btn_left_png"
+		},
+		{
+			"url": "res/public/button/btn_right.png",
+			"type": "image",
+			"name": "btn_right_png"
 		}
 	]
 }

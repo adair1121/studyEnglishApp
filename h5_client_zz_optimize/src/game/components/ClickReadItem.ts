@@ -15,9 +15,6 @@ class ClickReadItem extends BaseItemRender{
 		this.addTouchEvent(this.itemGroup,this.onClick,true)
 	}
 	private onClick(evt:egret.TouchEvent):void{
-		this.count += 1;
-		this.trans.visible = ((this.count%2) == 0);
-
 	}
 	protected dataChanged(): void {
 		if(!!this.data){
@@ -26,12 +23,23 @@ class ClickReadItem extends BaseItemRender{
 			this.audio = this.data.audio;
 		}
 	}
-	public refreshItem(data:any):void{
+	public initialize(data:any):void{
+		this.trans.visible = false;
+		this.count = 0;
+		this.refreshItem(data,"init");
+	}
+	public refreshItem(data:any,str:string = "refresh"):void{
 		for(let key in data){
 			if(this.enFont[key]){
 				this.enFont[key] = data[key]
 			}
 		}
+		if(str == "refresh"){
+			this.count += 1;
+			this.trans.visible = ((this.count%2) == 0);
+		}
+		SoundManager.ins().stopEffect();
+		SoundManager.ins().playEffect(`${MP3_DIR}${this.audio}`)
 	}
 	public distory():void{
 		this.removeTouchEvent(this.itemGroup,this.onClick);

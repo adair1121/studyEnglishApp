@@ -148,9 +148,9 @@ var DisplayUtils = (function () {
      * @param effectName
      * @returns {string}
      */
-    DisplayUtils.getEffectPath = function (effectName) {
-        return RES_DIR_EFF + effectName;
-    };
+    // public static getEffectPath(effectName: string): string {
+    // 	return RES_DIR_EFF + effectName;
+    // }
     /**滚动条滚动至底部 */
     DisplayUtils.scrollerToBottom = function (scroller) {
         scroller.viewport.validateNow();
