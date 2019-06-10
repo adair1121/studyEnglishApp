@@ -7,3 +7,4 @@ var AnswerConfig = (function () {
     return AnswerConfig;
 }());
 __reflect(AnswerConfig.prototype, "AnswerConfig");
+//# sourceMappingURL=AnswerConfig.js.map

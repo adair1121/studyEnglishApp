@@ -24,10 +24,18 @@ var MainScene = (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             param[_i] = arguments[_i];
         }
-        this.recordButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
+        // this.recordButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
+        this.testButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
     };
     MainScene.prototype.onTap = function (evt) {
-        ViewManager.ins().open(RecordScene);
+        switch (evt.target) {
+            // case this.recordButton:
+            // 	ViewManager.ins().open(RecordScene);
+            // 	break;
+            case this.testButton:
+                ViewManager.ins().open(TestScene);
+                break;
+        }
         // ViewManager.ins().close(MainScene);
     };
     MainScene.prototype.close = function () {
@@ -35,9 +43,11 @@ var MainScene = (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             param[_i] = arguments[_i];
         }
-        this.recordButton.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
+        this.testButton.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
+        // this.recordButton.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
     };
     return MainScene;
 }(BaseEuiView));
 __reflect(MainScene.prototype, "MainScene");
 ViewManager.ins().reg(MainScene, LayerManager.UI_Main);
+//# sourceMappingURL=MainScene.js.map

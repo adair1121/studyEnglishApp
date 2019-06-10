@@ -7,3 +7,4 @@ var PlatformConfig = (function () {
     return PlatformConfig;
 }());
 __reflect(PlatformConfig.prototype, "PlatformConfig");
+//# sourceMappingURL=PlatformConfig.js.map

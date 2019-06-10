@@ -57,3 +57,4 @@ var ClickReadItem = (function (_super) {
     return ClickReadItem;
 }(BaseItemRender));
 __reflect(ClickReadItem.prototype, "ClickReadItem");
+//# sourceMappingURL=ClickReadItem.js.map

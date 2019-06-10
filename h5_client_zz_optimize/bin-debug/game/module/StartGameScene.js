@@ -34,3 +34,4 @@ var StartGameScene = (function (_super) {
     return StartGameScene;
 }(BaseScene));
 __reflect(StartGameScene.prototype, "StartGameScene");
+//# sourceMappingURL=StartGameScene.js.map

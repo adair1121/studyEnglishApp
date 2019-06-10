@@ -244,3 +244,4 @@ var TimerHandler = (function () {
     return TimerHandler;
 }());
 __reflect(TimerHandler.prototype, "TimerHandler");
+//# sourceMappingURL=TimerManager.js.map

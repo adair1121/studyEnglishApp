@@ -454,3 +454,4 @@ var ViewManager = (function (_super) {
     return ViewManager;
 }(BaseClass));
 __reflect(ViewManager.prototype, "ViewManager");
+//# sourceMappingURL=ViewManager.js.map

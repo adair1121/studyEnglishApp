@@ -167,3 +167,4 @@ var UIGroup = (function () {
     return UIGroup;
 }());
 __reflect(UIGroup.prototype, "UIGroup");
+//# sourceMappingURL=UIGroup.js.map

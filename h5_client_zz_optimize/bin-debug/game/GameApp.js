@@ -39,3 +39,4 @@ var GameApp = (function (_super) {
 }(BaseClass));
 __reflect(GameApp.prototype, "GameApp");
 MessageCenter.compile(GameApp);
+//# sourceMappingURL=GameApp.js.map

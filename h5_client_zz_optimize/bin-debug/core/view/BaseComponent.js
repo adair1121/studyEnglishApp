@@ -81,3 +81,4 @@ var BaseComponent = (function (_super) {
     return BaseComponent;
 }(BaseView));
 __reflect(BaseComponent.prototype, "BaseComponent");
+//# sourceMappingURL=BaseComponent.js.map

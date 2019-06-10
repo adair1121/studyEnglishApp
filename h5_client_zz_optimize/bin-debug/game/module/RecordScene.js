@@ -73,3 +73,4 @@ var RecordScene = (function (_super) {
 }(BaseEuiView));
 __reflect(RecordScene.prototype, "RecordScene");
 ViewManager.ins().reg(RecordScene, LayerManager.UI_Main);
+//# sourceMappingURL=RecordScene.js.map

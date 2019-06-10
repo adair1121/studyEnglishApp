@@ -68,3 +68,4 @@ var GlobalConfig = (function () {
     return GlobalConfig;
 }());
 __reflect(GlobalConfig.prototype, "GlobalConfig");
+//# sourceMappingURL=GlobalConfig.js.map
