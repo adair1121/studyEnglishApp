@@ -78,4 +78,3 @@ var SoundEffects = (function (_super) {
     return SoundEffects;
 }(BaseSound));
 __reflect(SoundEffects.prototype, "SoundEffects");
-//# sourceMappingURL=SoundEffects.js.map

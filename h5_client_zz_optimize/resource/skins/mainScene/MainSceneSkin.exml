@@ -2,6 +2,9 @@
 <e:Skin class="MainSceneSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group left="0" top="0" right="0" bottom="0">
 		<e:Image source="main_bg_jpg" left="0" top="0" right="0" bottom="0"/>
-		<e:Button id="recordButton" label="记单词测试按钮" anchorOffsetX="0" width="328.79" horizontalCenter="12.5" top="203" anchorOffsetY="0" height="74"/>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="136">
+			<e:Image id="testButton" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="词汇量检测" x="123.84" y="38.09" touchEnabled="false"/>
+		</e:Group>
 	</e:Group>
 </e:Skin>

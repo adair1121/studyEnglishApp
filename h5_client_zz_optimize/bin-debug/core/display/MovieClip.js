@@ -246,4 +246,3 @@ var MovieClip = (function (_super) {
     return MovieClip;
 }(egret.MovieClip));
 __reflect(MovieClip.prototype, "MovieClip");
-//# sourceMappingURL=MovieClip.js.map

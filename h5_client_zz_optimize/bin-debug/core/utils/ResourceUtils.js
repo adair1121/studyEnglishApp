@@ -223,4 +223,3 @@ var ResourceUtils = (function (_super) {
     return ResourceUtils;
 }(BaseClass));
 __reflect(ResourceUtils.prototype, "ResourceUtils");
-//# sourceMappingURL=ResourceUtils.js.map

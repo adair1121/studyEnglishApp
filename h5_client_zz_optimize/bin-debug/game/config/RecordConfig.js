@@ -7,4 +7,3 @@ var RecordConfig = (function () {
     return RecordConfig;
 }());
 __reflect(RecordConfig.prototype, "RecordConfig");
-//# sourceMappingURL=RecordConfig.js.map

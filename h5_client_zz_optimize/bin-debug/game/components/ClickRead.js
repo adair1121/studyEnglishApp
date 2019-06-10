@@ -103,4 +103,3 @@ var ClickRead = (function (_super) {
     return ClickRead;
 }(eui.Component));
 __reflect(ClickRead.prototype, "ClickRead");
-//# sourceMappingURL=ClickRead.js.map

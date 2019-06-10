@@ -314,4 +314,3 @@ function callDelay(delay) {
     };
     return func;
 }
-//# sourceMappingURL=MessageCenter.js.map

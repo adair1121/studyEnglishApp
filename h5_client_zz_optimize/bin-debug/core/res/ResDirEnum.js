@@ -16,4 +16,3 @@ var ResPath = (function () {
     return ResPath;
 }());
 __reflect(ResPath.prototype, "ResPath");
-//# sourceMappingURL=ResDirEnum.js.map

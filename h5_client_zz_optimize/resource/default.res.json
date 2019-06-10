@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png,btn_left_png,btn_right_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png,btn_left_png,btn_right_png,button1_png,button2_png",
 			"name": "preload"
 		}
 	],
@@ -185,6 +185,16 @@
 			"url": "res/public/button/btn_right.png",
 			"type": "image",
 			"name": "btn_right_png"
+		},
+		{
+			"name": "button1_png",
+			"type": "image",
+			"url": "res/public/button/button1.png"
+		},
+		{
+			"name": "button2_png",
+			"type": "image",
+			"url": "res/public/button/button2.png"
 		}
 	]
 }

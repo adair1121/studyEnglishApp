@@ -57,8 +57,9 @@ class GlobalConfig {
 		}
 	}
 	static RecordConfig:RecordConfig[];
-
+	static answer:AnswerConfig[];
 	private static keys = {
 		"RecordConfig": 1,
+		"answer":1
 	};
 }

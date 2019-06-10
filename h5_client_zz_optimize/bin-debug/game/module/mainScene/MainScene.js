@@ -41,4 +41,3 @@ var MainScene = (function (_super) {
 }(BaseEuiView));
 __reflect(MainScene.prototype, "MainScene");
 ViewManager.ins().reg(MainScene, LayerManager.UI_Main);
-//# sourceMappingURL=MainScene.js.map

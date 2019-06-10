@@ -63,8 +63,8 @@ var GlobalConfig = (function () {
     };
     GlobalConfig.keys = {
         "RecordConfig": 1,
+        "answer": 1
     };
     return GlobalConfig;
 }());
 __reflect(GlobalConfig.prototype, "GlobalConfig");
-//# sourceMappingURL=GlobalConfig.js.map

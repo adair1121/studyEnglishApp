@@ -29,4 +29,3 @@ var GlobalFun = (function () {
     return GlobalFun;
 }());
 __reflect(GlobalFun.prototype, "GlobalFun");
-//# sourceMappingURL=GlobalFun.js.map

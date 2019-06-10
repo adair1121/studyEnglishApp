@@ -50,4 +50,3 @@ var LayerManager = (function () {
     return LayerManager;
 }());
 __reflect(LayerManager.prototype, "LayerManager");
-//# sourceMappingURL=LayerManager.js.map

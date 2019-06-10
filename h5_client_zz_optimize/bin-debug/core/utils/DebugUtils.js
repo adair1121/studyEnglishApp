@@ -49,4 +49,3 @@ var debug = {
     warn: DebugUtils.warn,
     error: DebugUtils.error
 };
-//# sourceMappingURL=DebugUtils.js.map
