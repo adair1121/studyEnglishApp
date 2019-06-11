@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="warnFrameSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Rect id="maskRect" left="0" right="0" top="0" bottom="0" alpha="0.3"/>
+	<e:Group verticalCenter="0" horizontalCenter="0" touchChildren="true" touchEnabled="true" touchThrough="true">
+		<e:Image source="main_white_block_png" width="392" anchorOffsetY="0" anchorOffsetX="0" x="0" height="255" y="55"/>
+		<e:Group id="sureBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0.5" bottom="19">
+			<e:Image y="0" source="button2_png" x="0"/>
+			<e:Label text="确定" x="108" y="15"/>
+		</e:Group>
+		<e:Image source="top_bg_jpg" anchorOffsetY="0" anchorOffsetX="0" height="55.21" width="392" y="0" x="0"/>
+		<e:Label text="提示" y="14" x="166"/>
+		<e:Label id="tips" text="清先选择答案" x="39" y="81" textColor="0x473e3e" anchorOffsetX="0" width="299" anchorOffsetY="0" height="121" textAlign="center" verticalAlign="middle"/>
+	</e:Group>
+</e:Skin>

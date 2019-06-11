@@ -10,9 +10,9 @@ class TestScene extends BaseEuiView{
 	private answerArr = [];
 
 	// 当前选择题目索引值
-	private curSelectIndex:number;
+	private curSelectIndex:number = -1;
 	// 当前题目正确答案索引
-	private answerIndex:number;
+	private answerIndex:number = -1;
 	// 答题正确数量
 	private correctNum:number = 0;
 	// 当前进行数量
@@ -24,20 +24,18 @@ class TestScene extends BaseEuiView{
 	private singleScore:number = 2;
 	// 题目总数量
 	private totalNum:number = 0;
+	private clicked:boolean = true;
 	public constructor() {
 		super();
 		this.skinName = "TestSceneSkin"
 	}
-	public initUI(): void {
-		super.initUI();
+	public open(...param: any[]): void {
 		this.progress.text = "0%";
 		this.num.text = "00";
 		this.word.text = "";
 		this.time.text = "60s";
 		this.list.itemRenderer = TestSceneItem;
 		this.itemCollect = new eui.ArrayCollection();
-	}
-	public open(...param: any[]): void {
 		this.answerArr = [];
 		let testData = GlobalConfig.answer;
 		for(let key in testData){
@@ -51,9 +49,27 @@ class TestScene extends BaseEuiView{
 		this.list.addEventListener(eui.ItemTapEvent.ITEM_TAP,this.onItemTap,this);
 		this.refreshPage(this.answerArr.shift());
 	}
+	// item点击
 	private onItemTap(evt:eui.ItemTapEvent):void{
+		if(!this.clicked){
+			return;
+		}
+		this.initItem();
 		this.curSelectIndex = evt.itemIndex;
-		console.log("当前选择的答案是："+this.curSelectIndex)
+		let item:TestSceneItem = this.list.getChildAt(evt.itemIndex) as TestSceneItem;
+		item.refreshItem(true);
+	}
+	private initItem():void{
+		this.initList(this.curSelectIndex);
+		this.initList(this.answerIndex);
+	}
+	private initList(index):void{
+		if(index != -1){
+			let item:TestSceneItem = this.list.getChildAt(index) as TestSceneItem;
+			if(!!item){
+				item.refreshItem(false);
+			}
+		}
 	}
 	private onTimer(evt:egret.TimerEvent):void{
 		this.timeNum -= 1;
@@ -63,7 +79,9 @@ class TestScene extends BaseEuiView{
 		}
 		this.time.text = this.timeNum+"s";
 	}
+	private fontObj:any = {0:"A",1:"B",2:"C",3:"D",4:"F",5:"G",6:"H",7:"I",8:"J"}
 	private refreshPage(itemData):void{
+		this.initItem();
 		this.curSelectIndex = -1;
 		this.timeNum = 60;
 		this.timer.start();
@@ -73,8 +91,8 @@ class TestScene extends BaseEuiView{
 		this.word.text = itemData.word;
 		let arr:any[] = itemData.selection.split("|");
 		let dataArr = [];
-		arr.forEach((item)=>{
-			dataArr.push({select:item})
+		arr.forEach((item,index)=>{
+			dataArr.push({select:item,label:this.fontObj[index]});
 		},this)
 		this.itemCollect.source = dataArr;
 		this.list.dataProvider = this.itemCollect;
@@ -88,7 +106,7 @@ class TestScene extends BaseEuiView{
 				break;
 			case this.submitBtn:
 				if(this.curSelectIndex == -1){
-					console.log("请先选择答案");
+					ViewManager.ins().open(WarnWin,{tips:"不要调皮～认真的做题选答案"})
 					return;
 				}
 				this.curProgressIndex +=1;
@@ -100,30 +118,44 @@ class TestScene extends BaseEuiView{
 	private showAnswer():void{
 		this.submitBtn.touchEnabled = false;
 		this.list.touchEnabled = false;
+		this.clicked = false;
 		this.timer.stop();
 		this.timer.reset();
+		let curItem:TestSceneItem = this.list.getChildAt(this.curSelectIndex) as TestSceneItem;
+		let rightItem:TestSceneItem = this.list.getChildAt(this.answerIndex) as TestSceneItem;
 		if(this.curSelectIndex == this.answerIndex){
 			this.correctNum += 1;
-			console.log("回答正确");
+			if(!!curItem){
+				curItem.refreshItem(true,1);
+			}
+			// console.log("回答正确")
 		}else{
-			console.log("回答错误");
+			if(!!curItem){
+				curItem.refreshItem(true,2);
+			}
+			if(!!rightItem){
+				rightItem.refreshItem(true,1);
+			}
+			// console.log("回答错误");
 		}
 		let timeout = egret.setTimeout(()=>{
 			egret.clearTimeout(timeout);
 			if(this.answerArr.length){
 				this.list.touchEnabled = true;
 				this.submitBtn.touchEnabled = true;
+				this.clicked = true;
 				this.refreshPage(this.answerArr.shift());
 			}else{
 				this.outputResult();
 			}
 		},this,3000)
 	}
+	// 显示测试结果页面
 	private outputResult():void{
-		console.log("输出结果");
-		this.close();
 		//打开结算界面
+		ViewManager.ins().open(TestResult,{score:this.correctNum*this.singleScore});
 		ViewManager.ins().close(TestScene);
+		this.close();
 	}
 	public close(...param: any[]): void {
 		this.num = null;
@@ -139,6 +171,7 @@ class TestScene extends BaseEuiView{
 		this.correctNum = null;
 		this.singleScore = null;
 		this.totalNum = null;
+		this.clicked = null;
 		this.timer.removeEventListener(egret.TimerEvent.TIMER,this.onTimer,this);
 		this.removeTouchEvent(this.exitButton,this.onTouch);
 		this.list.removeEventListener(eui.ItemTapEvent.ITEM_TAP,this.onItemTap,this);

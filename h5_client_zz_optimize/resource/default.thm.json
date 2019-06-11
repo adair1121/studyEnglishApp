@@ -33,9 +33,11 @@
 		"resource/skins/components/ClickReadSkin.exml",
 		"resource/skins/components/MyCheckBoxSkin.exml",
 		"resource/skins/components/TestSceneItemSkin.exml",
+		"resource/skins/components/warnFrameSkin.exml",
 		"resource/skins/GameLoadingUISkin.exml",
 		"resource/skins/mainScene/MainSceneSkin.exml",
 		"resource/skins/RecordSceneSkin.exml",
+		"resource/skins/TestResultSkin.exml",
 		"resource/skins/TestSceneSkin.exml"
 	],
 	"path": "resource/default.thm.json"

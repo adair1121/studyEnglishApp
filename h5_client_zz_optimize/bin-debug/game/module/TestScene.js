@@ -13,6 +13,10 @@ var TestScene = (function (_super) {
     function TestScene() {
         var _this = _super.call(this) || this;
         _this.answerArr = [];
+        // 当前选择题目索引值
+        _this.curSelectIndex = -1;
+        // 当前题目正确答案索引
+        _this.answerIndex = -1;
         // 答题正确数量
         _this.correctNum = 0;
         // 当前进行数量
@@ -23,23 +27,22 @@ var TestScene = (function (_super) {
         _this.singleScore = 2;
         // 题目总数量
         _this.totalNum = 0;
+        _this.clicked = true;
+        _this.fontObj = { 0: "A", 1: "B", 2: "C", 3: "D", 4: "F", 5: "G", 6: "H", 7: "I", 8: "J" };
         _this.skinName = "TestSceneSkin";
         return _this;
     }
-    TestScene.prototype.initUI = function () {
-        _super.prototype.initUI.call(this);
+    TestScene.prototype.open = function () {
+        var param = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            param[_i] = arguments[_i];
+        }
         this.progress.text = "0%";
         this.num.text = "00";
         this.word.text = "";
         this.time.text = "60s";
         this.list.itemRenderer = TestSceneItem;
         this.itemCollect = new eui.ArrayCollection();
-    };
-    TestScene.prototype.open = function () {
-        var param = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            param[_i] = arguments[_i];
-        }
         this.answerArr = [];
         var testData = GlobalConfig.answer;
         for (var key in testData) {
@@ -53,9 +56,27 @@ var TestScene = (function (_super) {
         this.list.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap, this);
         this.refreshPage(this.answerArr.shift());
     };
+    // item点击
     TestScene.prototype.onItemTap = function (evt) {
+        if (!this.clicked) {
+            return;
+        }
+        this.initItem();
         this.curSelectIndex = evt.itemIndex;
-        console.log("当前选择的答案是：" + this.curSelectIndex);
+        var item = this.list.getChildAt(evt.itemIndex);
+        item.refreshItem(true);
+    };
+    TestScene.prototype.initItem = function () {
+        this.initList(this.curSelectIndex);
+        this.initList(this.answerIndex);
+    };
+    TestScene.prototype.initList = function (index) {
+        if (index != -1) {
+            var item = this.list.getChildAt(index);
+            if (!!item) {
+                item.refreshItem(false);
+            }
+        }
     };
     TestScene.prototype.onTimer = function (evt) {
         this.timeNum -= 1;
@@ -66,6 +87,8 @@ var TestScene = (function (_super) {
         this.time.text = this.timeNum + "s";
     };
     TestScene.prototype.refreshPage = function (itemData) {
+        var _this = this;
+        this.initItem();
         this.curSelectIndex = -1;
         this.timeNum = 60;
         this.timer.start();
@@ -75,8 +98,8 @@ var TestScene = (function (_super) {
         this.word.text = itemData.word;
         var arr = itemData.selection.split("|");
         var dataArr = [];
-        arr.forEach(function (item) {
-            dataArr.push({ select: item });
+        arr.forEach(function (item, index) {
+            dataArr.push({ select: item, label: _this.fontObj[index] });
         }, this);
         this.itemCollect.source = dataArr;
         this.list.dataProvider = this.itemCollect;
@@ -90,7 +113,7 @@ var TestScene = (function (_super) {
                 break;
             case this.submitBtn:
                 if (this.curSelectIndex == -1) {
-                    console.log("请先选择答案");
+                    ViewManager.ins().open(WarnWin, { tips: "不要调皮～认真的做题选答案" });
                     return;
                 }
                 this.curProgressIndex += 1;
@@ -101,19 +124,34 @@ var TestScene = (function (_super) {
     TestScene.prototype.showAnswer = function () {
         var _this = this;
         this.submitBtn.touchEnabled = false;
+        this.list.touchEnabled = false;
+        this.clicked = false;
         this.timer.stop();
         this.timer.reset();
+        var curItem = this.list.getChildAt(this.curSelectIndex);
+        var rightItem = this.list.getChildAt(this.answerIndex);
         if (this.curSelectIndex == this.answerIndex) {
             this.correctNum += 1;
-            console.log("回答正确");
+            if (!!curItem) {
+                curItem.refreshItem(true, 1);
+            }
+            // console.log("回答正确")
         }
         else {
-            console.log("回答错误");
+            if (!!curItem) {
+                curItem.refreshItem(true, 2);
+            }
+            if (!!rightItem) {
+                rightItem.refreshItem(true, 1);
+            }
+            // console.log("回答错误");
         }
         var timeout = egret.setTimeout(function () {
             egret.clearTimeout(timeout);
             if (_this.answerArr.length) {
+                _this.list.touchEnabled = true;
                 _this.submitBtn.touchEnabled = true;
+                _this.clicked = true;
                 _this.refreshPage(_this.answerArr.shift());
             }
             else {
@@ -121,11 +159,12 @@ var TestScene = (function (_super) {
             }
         }, this, 3000);
     };
+    // 显示测试结果页面
     TestScene.prototype.outputResult = function () {
-        console.log("输出结果");
-        this.close();
         //打开结算界面
+        ViewManager.ins().open(TestResult, { score: this.correctNum * this.singleScore });
         ViewManager.ins().close(TestScene);
+        this.close();
     };
     TestScene.prototype.close = function () {
         var param = [];
@@ -145,6 +184,7 @@ var TestScene = (function (_super) {
         this.correctNum = null;
         this.singleScore = null;
         this.totalNum = null;
+        this.clicked = null;
         this.timer.removeEventListener(egret.TimerEvent.TIMER, this.onTimer, this);
         this.removeTouchEvent(this.exitButton, this.onTouch);
         this.list.removeEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap, this);

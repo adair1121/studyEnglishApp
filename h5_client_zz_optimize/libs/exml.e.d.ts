@@ -58,11 +58,15 @@ declare class MyCheckBoxSkin extends eui.Skin{
 }
 declare class TestSceneItemSkin extends eui.Skin{
 }
+declare class warnFrameSkin extends eui.Skin{
+}
 declare class GameLoadingUISkin extends eui.Skin{
 }
 declare class MainSceneSkin extends eui.Skin{
 }
 declare class RecordSceneSkin extends eui.Skin{
+}
+declare class TestResultSkin extends eui.Skin{
 }
 declare class TestSceneSkin extends eui.Skin{
 }

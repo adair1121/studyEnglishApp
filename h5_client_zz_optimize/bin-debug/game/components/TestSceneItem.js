@@ -18,9 +18,32 @@ var TestSceneItem = (function (_super) {
     TestSceneItem.prototype.dataChanged = function () {
         if (!!this.data) {
             this.select.text = this.data.select;
+            this.selectIndexLab.text = this.data.label;
+            this.selectLab = this.data.label;
         }
     };
-    TestSceneItem.prototype.refreshItem = function (data) {
+    TestSceneItem.prototype.refreshItem = function (select, result) {
+        if (result === void 0) { result = 0; }
+        if (result) {
+            this.selectIndexLab.visible = !select;
+        }
+        if (result == 1) {
+            //正确显示
+            this.selectImg.source = "select_right_jpg";
+            this.select.textColor = 0x23E023;
+        }
+        else if (result == 2) {
+            //错误
+            this.selectImg.source = "select_wrong_jpg";
+            this.select.textColor = 0xED0707;
+        }
+        else {
+            this.select.bold = select ? true : false;
+            this.select.size = select ? 40 : 30;
+            //正常状态
+            this.selectImg.source = "select_normal_png";
+            this.select.textColor = 0x000000;
+        }
     };
     return TestSceneItem;
 }(BaseItemRender));

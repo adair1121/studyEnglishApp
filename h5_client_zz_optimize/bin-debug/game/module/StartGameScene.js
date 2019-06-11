@@ -22,6 +22,7 @@ var StartGameScene = (function (_super) {
     StartGameScene.prototype.onEnter = function () {
         _super.prototype.onEnter.call(this);
         this.addLayer(LayerManager.UI_Main);
+        this.addLayer(LayerManager.UI_Popup);
         this.addLayer(LayerManager.UI_Tips);
         ViewManager.ins().open(MainScene);
     };

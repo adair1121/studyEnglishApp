@@ -2,6 +2,10 @@
 <e:Skin class="TestSceneItemSkin" width="634" height="80" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Group left="0" top="0" right="0" bottom="0" touchEnabled="true" touchChildren="false" touchThrough="false">
 		<e:Image source="main_white_block_png" left="0" top="0" right="0" bottom="0"/>
-		<e:Label id="select" text="Label" x="176" y="25" textColor="0x000000" touchEnabled="false"/>
+		<e:Label id="select" text="Label" touchEnabled="false" size="30" verticalCenter="0" left="128" textColor="0x000000"/>
+		<e:Group left="48" verticalCenter="0">
+			<e:Image id="selectImg" source="select_normal_png" width="50" height="50" x="0" y="0"/>
+			<e:Label id="selectIndexLab" text="A" x="15" y="10" textColor="0x000000"/>
+		</e:Group>
 	</e:Group>
 </e:Skin>
