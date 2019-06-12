@@ -31,7 +31,7 @@
   ],
   "targets": {
     "android": {
-      "appname": "StudyText",
+      "appname": "StudyEn",
       "packagename": "com.adair"
     }
   }

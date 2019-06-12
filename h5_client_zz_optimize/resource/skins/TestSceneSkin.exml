@@ -6,22 +6,22 @@
 		<e:Label text="词汇量检测" horizontalCenter="0" top="26"/>
 		<e:Image id="exitButton" source="btn_exit_png" left="4" top="3"/>
 		<e:Label id="progress" text="0%" right="26" top="26" textAlign="center"/>
-		<e:Image source="main_white_block_png" height="142" width="640" anchorOffsetY="0" horizontalCenter="0" top="94"/>
-		<e:Image source="main_white_block_png" height="142" width="640" anchorOffsetY="0" horizontalCenter="0" bottom="21"/>
-		<e:Image source="main_white_block_png" height="64%" width="640" anchorOffsetY="0" horizontalCenter="0" top="240"/>
+		<e:Image source="main_white_block_png" height="142" anchorOffsetY="0" top="94" left="0" right="0"/>
+		<e:Image source="main_white_block_png" anchorOffsetY="0" top="973" left="0" right="0" bottom="21"/>
+		<e:Image source="main_white_block_png" height="64%" anchorOffsetY="0" top="240" left="0" right="0"/>
 		<e:Label text="请根据下面的单词选出正确的答案:" textColor="0x5c6de0" horizontalCenter="0.5" top="110"/>
 		<e:Group horizontalCenter="-158" top="167">
 			<e:Image width="42" height="44" x="0" y="0" source="top_bg_jpg" anchorOffsetX="0" anchorOffsetY="0"/>
 			<e:Label id="num" text="00" x="4" y="8.33" textAlign="center" width="34"/>
 			<e:Label id="word" text="carry" scaleX="1" scaleY="1" left="55" top="7" textColor="0x3d3737"/>
 		</e:Group>
-		<e:Label id="time" text="60s" textColor="0x3d3737" right="85" top="174"/>
-		<e:List id="list" width="634" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="-1" top="242" useVirtualLayout="false" height="64%">
+		<e:Label id="time" text="60s" textColor="0x3d3737" top="174" horizontalCenter="210.5"/>
+		<e:List id="list" width="634" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="-1" top="242" useVirtualLayout="false" bottom="167">
 			<e:layout>
 				<e:VerticalLayout/>
 			</e:layout>
 		</e:List>
-		<e:Group id="submitBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0.5" bottom="61">
+		<e:Group id="submitBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0.5" top="1015">
 			<e:Image y="0" source="button2_png" x="0"/>
 			<e:Label text="提交" x="108" y="15"/>
 		</e:Group>
