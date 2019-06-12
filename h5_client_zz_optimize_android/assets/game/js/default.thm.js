@@ -831,12 +831,12 @@ window.skins={};
 	_proto.select_i = function () {
 		var t = new eui.Label();
 		this.select = t;
-		t.left = 128;
+		t.left = 141;
 		t.size = 30;
 		t.text = "Label";
 		t.textColor = 0x000000;
 		t.touchEnabled = false;
-		t.verticalCenter = 0;
+		t.verticalCenter = 2;
 		return t;
 	};
 	_proto._Group1_i = function () {
@@ -849,9 +849,9 @@ window.skins={};
 	_proto.selectImg_i = function () {
 		var t = new eui.Image();
 		this.selectImg = t;
-		t.height = 50;
+		t.height = 70;
 		t.source = "select_normal_png";
-		t.width = 50;
+		t.width = 70;
 		t.x = 0;
 		t.y = 0;
 		return t;
@@ -861,8 +861,8 @@ window.skins={};
 		this.selectIndexLab = t;
 		t.text = "A";
 		t.textColor = 0x000000;
-		t.x = 15;
-		t.y = 10;
+		t.x = 25.5;
+		t.y = 17;
 		return t;
 	};
 	return TestSceneItemSkin;
