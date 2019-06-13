@@ -3,8 +3,20 @@
 	<e:Group left="0" top="0" right="0" bottom="0">
 		<e:Image source="main_bg_jpg" left="0" top="0" right="0" bottom="0"/>
 		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="136">
+			<e:Image id="teachButton" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="高速记单词教学" touchEnabled="false" horizontalCenter="0" top="38"/>
+		</e:Group>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="308">
 			<e:Image id="testButton" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
-			<e:Label text="词汇量检测" x="123.84" y="38.09" touchEnabled="false"/>
+			<e:Label text="词汇量检测" touchEnabled="false" horizontalCenter="3.5" top="38"/>
+		</e:Group>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="468">
+			<e:Image id="recordButton" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="高速记单词体验" touchEnabled="false" horizontalCenter="3.5" top="38"/>
+		</e:Group>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="628">
+			<e:Image id="listButton" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="学生信息列表" touchEnabled="false" horizontalCenter="3.5" top="38"/>
 		</e:Group>
 	</e:Group>
 </e:Skin>

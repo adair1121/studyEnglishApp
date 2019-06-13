@@ -24,16 +24,20 @@ var MainScene = (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             param[_i] = arguments[_i];
         }
-        // this.recordButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
+        this.recordButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
         this.testButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
+        this.listButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
     };
     MainScene.prototype.onTap = function (evt) {
         switch (evt.target) {
-            // case this.recordButton:
-            // 	ViewManager.ins().open(RecordScene);
-            // 	break;
+            case this.recordButton:
+                ViewManager.ins().open(RecordScene);
+                break;
             case this.testButton:
                 ViewManager.ins().open(TestScene);
+                break;
+            case this.listButton:
+                ViewManager.ins().open(WarnWin, { tips: "此功能暂未开放，敬请期待～" });
                 break;
         }
         // ViewManager.ins().close(MainScene);
@@ -44,7 +48,8 @@ var MainScene = (function (_super) {
             param[_i] = arguments[_i];
         }
         this.testButton.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
-        // this.recordButton.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
+        this.recordButton.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
+        this.listButton.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTap, this);
     };
     return MainScene;
 }(BaseEuiView));
