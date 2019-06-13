@@ -58,8 +58,10 @@ class GlobalConfig {
 	}
 	static RecordConfig:RecordConfig[];
 	static answer:AnswerConfig[];
+	static LevelConfig:LevelConfig[];
 	private static keys = {
 		"RecordConfig": 1,
-		"answer":1
+		"answer":1,
+		"LevelConfig":1
 	};
 }
