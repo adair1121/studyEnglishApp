@@ -63,7 +63,8 @@ var GlobalConfig = (function () {
     };
     GlobalConfig.keys = {
         "RecordConfig": 1,
-        "answer": 1
+        "answer": 1,
+        "LevelConfig": 1
     };
     return GlobalConfig;
 }());

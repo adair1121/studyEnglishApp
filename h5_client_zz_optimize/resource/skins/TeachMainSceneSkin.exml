@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="TeachMainSceneSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group left="0" top="0" right="0" bottom="0">
+		<e:Image source="main_bg_jpg" left="0" top="0" right="0" bottom="0"/>
+		<e:Image id="exitButton" source="btn_exit_png" left="4" top="3"/>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="136">
+			<e:Image id="recordBtn" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="高速记单词" touchEnabled="false" horizontalCenter="0" top="38"/>
+		</e:Group>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="303">
+			<e:Image id="yueduBtn" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="高速阅读训练" touchEnabled="false" horizontalCenter="0" top="38"/>
+		</e:Group>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="479">
+			<e:Image id="bookBtn" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="课本点读背诵" touchEnabled="false" horizontalCenter="0" top="38"/>
+		</e:Group>
+		<e:Group touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0.5" top="646">
+			<e:Image id="wordBookBtn" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+			<e:Label text="我的生词本" touchEnabled="false" horizontalCenter="0" top="38"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

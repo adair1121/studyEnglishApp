@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="WordLibSelectItemSkin" width="618" height="118.18" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="itemGroup" touchChildren="false" touchEnabled="false" touchThrough="false" horizontalCenter="0" top="3">
+		<e:Image id="teachButton0" source="button1_png" anchorOffsetX="0" width="390.03" anchorOffsetY="0" height="106.52" x="0" y="0"/>
+		<e:Label id="label" text="高速记单词教学" touchEnabled="false" horizontalCenter="0" top="38"/>
+	</e:Group>
+</e:Skin>

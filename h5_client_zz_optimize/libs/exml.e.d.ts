@@ -66,7 +66,15 @@ declare class MainSceneSkin extends eui.Skin{
 }
 declare class RecordSceneSkin extends eui.Skin{
 }
+declare class TeachMainSceneSkin extends eui.Skin{
+}
 declare class TestResultSkin extends eui.Skin{
 }
 declare class TestSceneSkin extends eui.Skin{
+}
+declare class WordLibLevelSelectSkin extends eui.Skin{
+}
+declare class WordLibSelectItemSkin extends eui.Skin{
+}
+declare class WordLibSelectSkin extends eui.Skin{
 }

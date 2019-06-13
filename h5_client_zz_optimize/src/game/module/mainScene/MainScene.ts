@@ -15,6 +15,7 @@ class MainScene extends BaseEuiView{
 		this.recordButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
 		this.testButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
 		this.listButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
+		this.teachButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this)
 	}
 	private onTap(evt:egret.TouchEvent):void{
 		switch(evt.target){
@@ -27,6 +28,9 @@ class MainScene extends BaseEuiView{
 			case this.listButton:
 				ViewManager.ins().open(WarnWin,{tips:"此功能暂未开放，敬请期待～"})
 				break;
+			case this.teachButton:
+				ViewManager.ins().open(TeachMainScene);
+				break;
 		}
 		
 		// ViewManager.ins().close(MainScene);
@@ -35,6 +39,7 @@ class MainScene extends BaseEuiView{
 		this.testButton.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
 		this.recordButton.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
 		this.listButton.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this);
+		this.teachButton.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTap,this)
 	}
 }
 ViewManager.ins().reg(MainScene, LayerManager.UI_Main);

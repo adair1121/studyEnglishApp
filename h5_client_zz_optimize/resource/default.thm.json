@@ -37,8 +37,12 @@
 		"resource/skins/GameLoadingUISkin.exml",
 		"resource/skins/mainScene/MainSceneSkin.exml",
 		"resource/skins/RecordSceneSkin.exml",
+		"resource/skins/TeachMainSceneSkin.exml",
 		"resource/skins/TestResultSkin.exml",
-		"resource/skins/TestSceneSkin.exml"
+		"resource/skins/TestSceneSkin.exml",
+		"resource/skins/WordLibLevelSelectSkin.exml",
+		"resource/skins/WordLibSelectItemSkin.exml",
+		"resource/skins/WordLibSelectSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }
