@@ -39,7 +39,7 @@ var WordLibSelect = (function (_super) {
     WordLibSelect.prototype.onItemTap = function (evt) {
         var grade = evt.itemIndex + 1;
         if (this.dataObj[grade]) {
-            ViewManager.ins().open(WordLibLevelSelect, { data: this.dataObj[grade] });
+            ViewManager.ins().open(WordLibLevelSelect, { data: this.dataObj[grade], grade: grade });
         }
     };
     WordLibSelect.prototype.dealLevelData = function () {
@@ -51,7 +51,6 @@ var WordLibSelect = (function (_super) {
             }
             this.dataObj[itemConfig.grade].push(itemConfig);
         }
-        console.log(this.dataObj);
     };
     WordLibSelect.prototype.onTouchTap = function (evt) {
         switch (evt.target) {

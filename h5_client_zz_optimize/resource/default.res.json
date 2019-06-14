@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png,btn_left_png,btn_right_png,button1_png,button2_png,select_wrong_jpg,select_normal_png,select_right_jpg",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,description_json,main_bg_jpg,main_bg_bottom_jpg,main_bg2_jpg,main_bg_bottom2_jpg,top_bg_jpg,btn_exit_png,main_white_block_png,btn_left_png,btn_right_png,button1_png,button2_png,select_wrong_jpg,select_normal_png,select_right_jpg,WechatIMG5_png,WechatIMG14_png,navBtn1_down_png,navBtn1_up_png,navBtn2_up_png,navBtn2_down_png,navBtn3_down_png,navBtn3_up_png,navBtn4_down_png,item_up_png,item_down_png",
 			"name": "preload"
 		}
 	],
@@ -210,6 +210,61 @@
 			"name": "select_right_jpg",
 			"type": "image",
 			"url": "res/public/button/select_right.jpg"
+		},
+		{
+			"name": "WechatIMG5_png",
+			"type": "image",
+			"url": "res/page/WechatIMG5.png"
+		},
+		{
+			"name": "WechatIMG14_png",
+			"type": "image",
+			"url": "res/page/WechatIMG14.png"
+		},
+		{
+			"name": "navBtn1_down_png",
+			"type": "image",
+			"url": "res/public/button/navBtn1_down.png"
+		},
+		{
+			"name": "navBtn1_up_png",
+			"type": "image",
+			"url": "res/public/button/navBtn1_up.png"
+		},
+		{
+			"name": "navBtn2_up_png",
+			"type": "image",
+			"url": "res/public/button/navBtn2_up.png"
+		},
+		{
+			"name": "navBtn2_down_png",
+			"type": "image",
+			"url": "res/public/button/navBtn2_down.png"
+		},
+		{
+			"name": "navBtn3_down_png",
+			"type": "image",
+			"url": "res/public/button/navBtn3_down.png"
+		},
+		{
+			"name": "navBtn3_up_png",
+			"type": "image",
+			"url": "res/public/button/navBtn3_up.png"
+		},
+		{
+			"name": "navBtn4_down_png",
+			"type": "image",
+			"url": "res/public/button/navBtn4_down.png"
+		},
+		{
+			"name": "item_up_png",
+			"type": "image",
+			"url": "res/page/item_up.png"
+		},
+		{
+			"name": "item_down_png",
+			"type": "image",
+			"url": "res/page/item_down.png"
 		}
 	]
 }

@@ -27,7 +27,7 @@ class WordLibSelect extends BaseEuiView{
 	private onItemTap(evt:eui.ItemTapEvent):void{
 		let grade = evt.itemIndex + 1;
 		if(this.dataObj[grade]){
-			ViewManager.ins().open(WordLibLevelSelect,{data:this.dataObj[grade]});
+			ViewManager.ins().open(WordLibLevelSelect,{data:this.dataObj[grade],grade:grade});
 		}
 	}
 	private dataObj = {};

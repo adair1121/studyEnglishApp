@@ -23,6 +23,12 @@ var WordLibSelectItem = (function (_super) {
     WordLibSelectItem.prototype.dataChanged = function () {
         if (!!this.data) {
             this.label.text = this.data.label;
+            if (this.data.recorded) {
+                this.itembg.source = "item_down_png";
+            }
+            else {
+                this.itembg.source = "item_up_png";
+            }
         }
     };
     WordLibSelectItem.prototype.distory = function () {
