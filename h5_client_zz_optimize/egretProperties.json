@@ -31,7 +31,7 @@
   ],
   "targets": {
     "android": {
-      "appname": "StudyEn",
+      "appname": "高速记单词",
       "packagename": "com.adair"
     }
   }

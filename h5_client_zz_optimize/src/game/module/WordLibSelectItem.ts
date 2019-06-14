@@ -10,6 +10,7 @@ class WordLibSelectItem extends BaseItemRender{
 		this.addTouchEvent(this.itemGroup,this.onClick,true)
 	}
 	private onClick(evt:egret.TouchEvent):void{
+		
 	}
 	protected dataChanged(): void {
 		if(!!this.data){
@@ -20,6 +21,9 @@ class WordLibSelectItem extends BaseItemRender{
 				this.itembg.source = "item_up_png";
 			}
 		}
+	}
+	public refresh():void{
+		this.itembg.source = "item_down_png";
 	}
 	public distory():void{
 		this.removeTouchEvent(this.itemGroup,this.onClick);

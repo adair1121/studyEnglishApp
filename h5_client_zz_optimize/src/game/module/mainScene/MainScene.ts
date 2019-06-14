@@ -20,7 +20,7 @@ class MainScene extends BaseEuiView{
 	private onTap(evt:egret.TouchEvent):void{
 		switch(evt.target){
 			case this.recordButton:
-				ViewManager.ins().open(RecordScene);
+				ViewManager.ins().open(RecordScene,{dataCfg:GlobalConfig.RecordConfig});
 				break;
 			case this.testButton:
 				ViewManager.ins().open(TestScene);

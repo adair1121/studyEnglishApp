@@ -32,7 +32,7 @@ var MainScene = (function (_super) {
     MainScene.prototype.onTap = function (evt) {
         switch (evt.target) {
             case this.recordButton:
-                ViewManager.ins().open(RecordScene);
+                ViewManager.ins().open(RecordScene, { dataCfg: GlobalConfig.RecordConfig });
                 break;
             case this.testButton:
                 ViewManager.ins().open(TestScene);

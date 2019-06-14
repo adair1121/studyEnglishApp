@@ -20,7 +20,9 @@ class ClickReadItem extends BaseItemRender{
 		if(!!this.data){
 			this.enFont.text = this.data.font;
 			this.trans.text = this.data.trans;
-			this.audio = this.data.audio;
+			if(this.data.audio){
+				this.audio = this.data.audio;
+			}
 		}
 	}
 	public initialize(data:any):void{

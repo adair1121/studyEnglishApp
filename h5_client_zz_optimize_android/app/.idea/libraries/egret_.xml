@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="egret-">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/3984ddc0eec559491de0423a45ca2160188d085c/output/jars/libs/egretNativeAndroid.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3984ddc0eec559491de0423a45ca2160188d085c/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/3984ddc0eec559491de0423a45ca2160188d085c/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

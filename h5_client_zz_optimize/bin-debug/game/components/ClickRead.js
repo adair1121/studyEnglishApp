@@ -49,6 +49,9 @@ var ClickRead = (function (_super) {
         var count = 0;
         var hpercent = window.innerHeight / 860;
         var relactIndex = Math.ceil(8 * hpercent);
+        if (hpercent > 1) {
+            relactIndex = 8;
+        }
         this.totalPage = Math.ceil(arr.length / relactIndex);
         for (var i = 0; i < arr.length; i++) {
             count += 1;

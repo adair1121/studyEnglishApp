@@ -5,6 +5,7 @@ class RecordScene extends BaseEuiView{
 
 	public btn_left:eui.Image;
 	private btn_right:eui.Image;
+	private title:eui.Label;
 	public constructor() {
 		super();
 		this.skinName = "RecordSceneSkin"
@@ -16,9 +17,13 @@ class RecordScene extends BaseEuiView{
 		this.addTouchEvent(this.exitButton,this.onTouch,true);
 		this.addTouchEvent(this.btn_left,this.onLeft,true);
 		this.addTouchEvent(this.btn_right,this.onRight,true);
+		let dataConfig = param[0].dataCfg;
+		if(param[0].title){
+			this.title.text = param[0].title;
+		}
 		let arr = [];
-		for(let key in GlobalConfig.RecordConfig){
-			arr.push(GlobalConfig.RecordConfig[key])
+		for(let key in dataConfig){
+			arr.push(dataConfig[key])
 		}
 		this.clickReadpanel.dataProvider(arr)
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/zhiqiang/.android/build-cache/3984ddc0eec559491de0423a45ca2160188d085c/output/jars/libs/egretNativeAndroid.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="29.0.0"
+        sha1="fecd4b5aa58a1524ad36937d22ed764d1b14f2bb">
+        <dex dex="/Users/zhiqiang/Desktop/studyEnglishApp/h5_client_zz_optimize_android/app/build/intermediates/pre-dexed/release/egretNativeAndroid_6e21c4dc00a51e956c3740ae01cb4d5fc148d221.jar" />
+    </item>
+
+</items>

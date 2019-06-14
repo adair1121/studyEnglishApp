@@ -31,6 +31,9 @@ var WordLibSelectItem = (function (_super) {
             }
         }
     };
+    WordLibSelectItem.prototype.refresh = function () {
+        this.itembg.source = "item_down_png";
+    };
     WordLibSelectItem.prototype.distory = function () {
         this.removeTouchEvent(this.itemGroup, this.onClick);
     };

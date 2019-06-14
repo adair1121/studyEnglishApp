@@ -41,6 +41,9 @@ class ClickRead extends eui.Component{
 		let count = 0;
 		let hpercent = window.innerHeight/860;
 		let relactIndex = Math.ceil(8*hpercent);
+		if(hpercent > 1){
+			relactIndex = 8;
+		}
 		this.totalPage = Math.ceil(arr.length/relactIndex);
 		for(let i:number = 0;i<arr.length;i++){
 			count +=1;

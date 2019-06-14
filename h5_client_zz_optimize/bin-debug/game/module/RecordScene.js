@@ -26,9 +26,13 @@ var RecordScene = (function (_super) {
         this.addTouchEvent(this.exitButton, this.onTouch, true);
         this.addTouchEvent(this.btn_left, this.onLeft, true);
         this.addTouchEvent(this.btn_right, this.onRight, true);
+        var dataConfig = param[0].dataCfg;
+        if (param[0].title) {
+            this.title.text = param[0].title;
+        }
         var arr = [];
-        for (var key in GlobalConfig.RecordConfig) {
-            arr.push(GlobalConfig.RecordConfig[key]);
+        for (var key in dataConfig) {
+            arr.push(dataConfig[key]);
         }
         this.clickReadpanel.dataProvider(arr);
         this.pageNum.text = this.clickReadpanel.m_curPage + "/" + this.clickReadpanel.m_pageNum;

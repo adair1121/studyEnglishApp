@@ -3,7 +3,7 @@
 	<e:Group left="0" top="0" right="0" bottom="0">
 		<e:Image source="main_bg_jpg" left="0" top="0" right="0" bottom="0"/>
 		<e:Label text="请选择你开始识记的单词关" size="40" horizontalCenter="0" top="99" bold="true" textColor="0xEFE7E1"/>
-        <e:Scroller id="scroller" anchorOffsetX="0" width="636.06" y="169.7" anchorOffsetY="0" height="756.91">
+        <e:Scroller id="scroller" anchorOffsetX="0" width="636.06" anchorOffsetY="0" height="756.91" horizontalCenter="0" top="170">
             <e:List id="list" anchorOffsetX="0" anchorOffsetY="0" left="9" right="13" top="158" bottom="8" useVirtualLayout="false">
 		<e:layout>
 			<e:VerticalLayout paddingLeft="10"/>
