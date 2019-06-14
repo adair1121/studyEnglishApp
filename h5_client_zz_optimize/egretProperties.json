@@ -33,6 +33,11 @@
     "android": {
       "appname": "高速记单词",
       "packagename": "com.adair"
+    },
+    "ios": {
+      "appname": "高速记单词",
+      "packagename": "com.companyname",
+      "hybrid": false
     }
   }
 }
