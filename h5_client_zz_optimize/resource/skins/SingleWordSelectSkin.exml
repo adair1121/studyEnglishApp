@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SingleWordSelectSkin" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group left="0" top="0" right="0" bottom="0">
+		<e:Image source="main_white_block_png" anchorOffsetY="0" left="0" right="0" top="0" bottom="0"/>
+		<e:Image source="top_bg_jpg" anchorOffsetY="0" anchorOffsetX="0" height="84" left="0" right="0" top="0"/>
+		<e:Image id="exitButton" source="btn_exit_png" left="4" top="3"/>
+		<e:Group id="sureBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0" bottom="61">
+			<e:Image y="0" source="button2_png" x="0"/>
+			<e:Label id="buttonLabel" text="开始复习" horizontalCenter="0.5" verticalCenter="0"/>
+		</e:Group>
+		<e:Group id="delBtn" touchChildren="false" touchEnabled="true" touchThrough="false" right="20" anchorOffsetX="0" width="111" top="12" visible="false">
+			<e:Image source="button2_png" left="0" top="0" right="0" bottom="0"/>
+			<e:Label text="删除" horizontalCenter="0.5" verticalCenter="0"/>
+		</e:Group>
+		<e:Scroller id="scroller" width="630.3" height="869.7" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0" top="91">
+			<e:List id="list" useVirtualLayout="false" itemRendererSkinName="SingleWordSelectItemSkin">
+				<e:layout>
+					<e:TileLayout orientation="rows" horizontalAlign="center" requestedColumnCount="2"/>
+				</e:layout>
+				<e:ArrayCollection>
+					<e:Array>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+						<e:Object test="null"/>
+					</e:Array>
+				</e:ArrayCollection>
+			</e:List>
+		</e:Scroller>
+		<e:Label id="title" text="请选择需要复习的单词" horizontalCenter="0" top="27"/>
+		<e:Group id="selectAll" left="27" bottom="66" touchChildren="false" touchEnabled="true" touchThrough="false">
+			<e:CheckBox id="selectCheck" label="全选" x="0" y="0" skinName="MyCheckBoxSkin"/>
+			<e:Label text="全选" x="56" y="12" textColor="0x000000" bold="true"/>
+		</e:Group>
+	</e:Group>
+</e:Skin>

@@ -49,8 +49,10 @@ var ClickReadItem = (function (_super) {
             this.count += 1;
             this.trans.visible = ((this.count % 2) == 0);
         }
-        SoundManager.ins().stopEffect();
-        SoundManager.ins().playEffect("" + MP3_DIR + this.audio);
+        if (this.audio) {
+            SoundManager.ins().stopEffect();
+            SoundManager.ins().playEffect("" + MP3_DIR + this.audio);
+        }
     };
     ClickReadItem.prototype.distory = function () {
         this.removeTouchEvent(this.itemGroup, this.onClick);

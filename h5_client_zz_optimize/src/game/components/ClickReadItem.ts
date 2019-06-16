@@ -40,8 +40,11 @@ class ClickReadItem extends BaseItemRender{
 			this.count += 1;
 			this.trans.visible = ((this.count%2) == 0);
 		}
-		SoundManager.ins().stopEffect();
-		SoundManager.ins().playEffect(`${MP3_DIR}${this.audio}`)
+		if(this.audio){
+			SoundManager.ins().stopEffect();
+			SoundManager.ins().playEffect(`${MP3_DIR}${this.audio}`)
+		}
+		
 	}
 	public distory():void{
 		this.removeTouchEvent(this.itemGroup,this.onClick);

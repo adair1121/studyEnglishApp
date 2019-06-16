@@ -56,15 +56,23 @@ declare class ClickReadSkin extends eui.Skin{
 }
 declare class MyCheckBoxSkin extends eui.Skin{
 }
+declare class MyNavButton extends eui.Skin{
+}
+declare class SingleWordSelectItemSkin extends eui.Skin{
+}
 declare class TestSceneItemSkin extends eui.Skin{
 }
 declare class warnFrameSkin extends eui.Skin{
+}
+declare class WordRecoverItemSkin extends eui.Skin{
 }
 declare class GameLoadingUISkin extends eui.Skin{
 }
 declare class MainSceneSkin extends eui.Skin{
 }
 declare class RecordSceneSkin extends eui.Skin{
+}
+declare class SingleWordSelectSkin extends eui.Skin{
 }
 declare class TeachMainSceneSkin extends eui.Skin{
 }

@@ -24,8 +24,20 @@ var WarnWin = (function (_super) {
             param[_i] = arguments[_i];
         }
         this.addTouchEvent(this.maskRect, this.close);
-        this.addTouchEvent(this.sureBtn, this.close);
+        this.addTouchEvent(this.sureBtn, this.onSure);
         this.tips.text = param[0].tips;
+        if (param[0].callBack) {
+            this.callBack = param[0].callBack;
+        }
+        if (param[0].thisArg) {
+            this.thisArg = param[0].thisArg;
+        }
+    };
+    WarnWin.prototype.onSure = function () {
+        if (this.callBack && this.thisArg) {
+            this.callBack.call(this.thisArg);
+        }
+        this.close();
     };
     WarnWin.prototype.close = function () {
         var param = [];
@@ -33,7 +45,7 @@ var WarnWin = (function (_super) {
             param[_i] = arguments[_i];
         }
         this.removeTouchEvent(this.maskRect, this.close);
-        this.removeTouchEvent(this.sureBtn, this.close);
+        this.removeTouchEvent(this.sureBtn, this.onSure);
         ViewManager.ins().close(WarnWin);
     };
     return WarnWin;

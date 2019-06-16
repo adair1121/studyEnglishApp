@@ -13,6 +13,8 @@ var WordLibLevelSelect = (function (_super) {
     function WordLibLevelSelect() {
         var _this = _super.call(this) || this;
         _this.levelData = {};
+        _this.levelCfgs = [];
+        _this.openData = [];
         _this.skinName = "WordLibLevelSelectSkin";
         return _this;
     }
@@ -21,29 +23,51 @@ var WordLibLevelSelect = (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             param[_i] = arguments[_i];
         }
+        this.viewstack.selectedIndex = 0;
+        this.tabbar.dataProvider = this.viewstack;
+        this.tabbar.itemRendererSkinName = MyNavButton;
         this.arrayCollect = new eui.ArrayCollection();
+        this.arrayCollect1 = new eui.ArrayCollection();
         this.list.itemRenderer = WordLibSelectItem;
         this.levelData = {};
         this.scroller.viewport = this.list;
-        var data = param[0].data;
+        this.openData = param[0].data;
         this.grade = param[0].grade;
-        var itemData = [];
-        var levelCfgs = [];
-        for (var i = 0; i < data.length; i++) {
-            if (itemData.indexOf(data[i].level) == -1) {
-                itemData.push(data[i].level);
-                var recordStr = localStorage.getItem(data[i].grade + "_" + data[i].level);
-                var recorded = recordStr ? true : false;
-                levelCfgs.push({ label: "第" + data[i].level + "关", recorded: recorded });
-            }
-        }
-        this.dealLevelData(data);
-        this.arrayCollect.source = levelCfgs;
+        this.refreshLevelCfgs();
+        this.dealLevelData();
+        this.arrayCollect.source = this.levelCfgs;
         this.list.dataProvider = this.arrayCollect;
         this.exitButton.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.list.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap, this);
+        //---复习功能
+        this.list1.itemRenderer = WordRecoverItem;
+        this.scroller1.viewport = this.list1;
+        this.arrayCollect1.source = this.levelCfgs;
+        this.list1.dataProvider = this.arrayCollect1;
+        this.list1.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap1, this);
+        this.sureBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
+        //-------------------------------
     };
-    WordLibLevelSelect.prototype.dealLevelData = function (levelcgfs) {
+    //刷新关卡配置
+    WordLibLevelSelect.prototype.refreshLevelCfgs = function () {
+        var itemData = [];
+        this.levelCfgs = [];
+        var data = this.openData;
+        for (var i = 0; i < data.length; i++) {
+            if (itemData.indexOf(data[i].level) == -1) {
+                itemData.push(data[i].level);
+                var recordStr = egret.localStorage.getItem(data[i].grade + "_" + data[i].level);
+                var recorded = recordStr ? true : false;
+                this.levelCfgs.push({ label: "第" + data[i].level + "关", recorded: recorded, level: data[i].level });
+            }
+        }
+        this.arrayCollect.source = this.levelCfgs;
+        this.list.dataProviderRefreshed();
+        this.arrayCollect1.source = this.levelCfgs;
+        this.list1.dataProviderRefreshed();
+    };
+    WordLibLevelSelect.prototype.dealLevelData = function () {
+        var levelcgfs = this.openData;
         for (var i = 0; i < levelcgfs.length; i++) {
             var level = levelcgfs[i].level;
             if (!this.levelData[level]) {
@@ -55,14 +79,27 @@ var WordLibLevelSelect = (function (_super) {
     WordLibLevelSelect.prototype.onItemTap = function (evt) {
         var level = evt.itemIndex + 1;
         var levelData = this.levelData[level];
-        if (!localStorage.getItem(this.grade + "_" + level)) {
-            localStorage.setItem(this.grade + "_" + level, "1");
-            var item = this.list.getChildAt(evt.itemIndex);
-            if (!!item) {
-                item.refresh();
-            }
+        if (!egret.localStorage.getItem(this.grade + "_" + level)) {
+            egret.localStorage.setItem(this.grade + "_" + level, "1");
+            // let item:WordLibSelectItem = this.list.getChildAt(evt.itemIndex) as WordLibSelectItem;
+            // if(!!item){
+            // 	item.refresh();
+            this.refreshLevelCfgs();
+            // }
         }
         ViewManager.ins().open(RecordScene, { dataCfg: levelData, title: "第" + level + "关" });
+    };
+    WordLibLevelSelect.prototype.onItemTap1 = function (evt) {
+        var item = this.list1.getChildAt(evt.itemIndex);
+        if (!!item) {
+            if (item.recorded) {
+                item.select = !item.select;
+            }
+            else {
+                ViewManager.ins().open(WarnWin, { tips: "请选择已学习过的关卡~" });
+                return;
+            }
+        }
     };
     WordLibLevelSelect.prototype.onTouchTap = function (evt) {
         switch (evt.target) {
@@ -70,7 +107,30 @@ var WordLibLevelSelect = (function (_super) {
                 this.close();
                 ViewManager.ins().close(WordLibLevelSelect);
                 break;
+            case this.sureBtn:
+                this.recoverStart();
+                break;
         }
+    };
+    /**
+     * 前往复习功能
+     */
+    WordLibLevelSelect.prototype.recoverStart = function () {
+        var len = this.list1.$children.length;
+        var levelDatas = [];
+        for (var i = 0; i < len; i++) {
+            var item = this.list1.getChildAt(i);
+            if (!!item) {
+                if (item.select) {
+                    levelDatas = levelDatas.concat(this.levelData[item.selectLev]);
+                }
+            }
+        }
+        //进入选择单词界面
+        ViewManager.ins().open(SingleWordSelect, { wordData: levelDatas });
+        // ViewManager.ins().open(RecordScene,{dataCfg:levelDatas,title:"正在复习中~请继续努力哦"})
+        // this.close();
+        // ViewManager.ins().close(WordLibLevelSelect);
     };
     WordLibLevelSelect.prototype.close = function () {
         var param = [];
@@ -78,8 +138,12 @@ var WordLibLevelSelect = (function (_super) {
             param[_i] = arguments[_i];
         }
         this.levelData = {};
+        this.levelCfgs = [];
+        this.openData = [];
         this.exitButton.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.list.removeEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap, this);
+        this.list1.removeEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap1, this);
+        this.sureBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
     };
     return WordLibLevelSelect;
 }(BaseEuiView));

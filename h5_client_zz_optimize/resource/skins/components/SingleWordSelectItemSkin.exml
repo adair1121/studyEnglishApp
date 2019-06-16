@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SingleWordSelectItemSkin" width="300" height="57" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="main_white_block_png" anchorOffsetY="0" left="0" top="0" right="0" bottom="0" x="0" y="0"/>
+	<e:Label id="font" text="Wold" textAlign="left" textColor="0x000000" left="24" verticalCenter="-0.5" x="24" y="14" anchorOffsetX="0" width="180" anchorOffsetY="0" height="40" verticalAlign="middle" touchEnabled="true"/>
+	<e:CheckBox id="checkbox" label="CheckBox" x="225" y="3" skinName="MyCheckBoxSkin" touchEnabled="true" touchChildren="false" selected="false" enabled="true"/>
+</e:Skin>

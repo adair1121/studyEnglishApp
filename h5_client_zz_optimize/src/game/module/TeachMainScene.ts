@@ -21,16 +21,34 @@ class TeachMainScene extends BaseEuiView{
 	private onTap(evt:egret.TouchEvent):void{
 		switch(evt.target){
 			case this.recordBtn:
+				//记单词教学
 				ViewManager.ins().open(WordLibSelect);
 				break;
 			case this.yueduBtn:
+				//阅读训练
 				ViewManager.ins().open(WarnWin,{tips:"此功能暂未开放，敬请期待～"})
 				break;
 			case this.bookBtn:
+				//课本点读背诵
 				ViewManager.ins().open(WarnWin,{tips:"此功能暂未开放，敬请期待～"});
 				break;
 			case this.wordBookBtn:
-				ViewManager.ins().open(WarnWin,{tips:"此功能暂未开放，敬请期待～"});
+				let wordIds:string = egret.localStorage.getItem("wordids");
+				let wordData:any[] = [];
+				if(wordIds){
+					let wordidArr:string[] = wordIds.split("|");
+					wordidArr.forEach(id=>{
+						let itemConfig:any = JSON.parse(egret.localStorage.getItem(id.toString()))
+						if(itemConfig){
+							wordData.push(itemConfig)
+						}
+					})
+					
+				}else{
+					egret.localStorage.setItem("wordids","");
+				}
+				//生词本
+				ViewManager.ins().open(SingleWordSelect,{wordData:wordData,title:"我的生词本",route:"TeachMainScene"});
 				break;
 			case this.exitButton:
 				this.close();

@@ -32,16 +32,32 @@ var TeachMainScene = (function (_super) {
     TeachMainScene.prototype.onTap = function (evt) {
         switch (evt.target) {
             case this.recordBtn:
+                //记单词教学
                 ViewManager.ins().open(WordLibSelect);
                 break;
             case this.yueduBtn:
+                //阅读训练
                 ViewManager.ins().open(WarnWin, { tips: "此功能暂未开放，敬请期待～" });
                 break;
             case this.bookBtn:
+                //课本点读背诵
                 ViewManager.ins().open(WarnWin, { tips: "此功能暂未开放，敬请期待～" });
                 break;
             case this.wordBookBtn:
-                ViewManager.ins().open(WarnWin, { tips: "此功能暂未开放，敬请期待～" });
+                var wordIds = egret.localStorage.getItem("wordids");
+                var wordData_1 = [];
+                if (wordIds) {
+                    var wordidArr = wordIds.split("|");
+                    wordidArr.forEach(function (id) {
+                        var itemConfig = JSON.parse(egret.localStorage.getItem(id.toString()));
+                        wordData_1.push(itemConfig);
+                    });
+                }
+                else {
+                    egret.localStorage.setItem("wordids", "");
+                }
+                //生词本
+                ViewManager.ins().open(SingleWordSelect, { wordData: wordData_1, title: "我的生词本", route: "TeachMainScene" });
                 break;
             case this.exitButton:
                 this.close();

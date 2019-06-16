@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<e:Skin class="MyNavButton" states="up,down,disabled" minHeight="50" minWidth="100" xmlns:e="http://ns.egret.com/eui">
+    <e:Image   alpha.disabled="0.5"
+             source="navBtn1_up_png"
+             source.down="navBtn1_down_png" y.up="-1"/>
+    <e:Label id="labelDisplay"
+             size="20"
+             textColor="0xFFFFFF" verticalAlign="middle" textAlign="center" anchorOffsetY="0" text="{data}" width="115" height="25" y="59" x="10" width.down="115" height.down="25" x.down="9" y.down="59"/>
+    <e:Image id="iconDisplay" horizontalCenter="0" verticalCenter="0"/>
+</e:Skin>

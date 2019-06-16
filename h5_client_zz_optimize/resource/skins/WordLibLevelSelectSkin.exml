@@ -2,15 +2,42 @@
 <e:Skin class="WordLibLevelSelectSkin" width="640" height="1136" currentState="record" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" states="record" >
 	<e:Group left="0" top="0" right="0" bottom="0">
 		<e:Image source="main_bg_jpg" left="0" top="0" right="0" bottom="0"/>
-		<e:Label text="请选择你开始识记的单词关" size="40" horizontalCenter="0" top="99" bold="true" textColor="0xEFE7E1"/>
-        <e:Scroller id="scroller" anchorOffsetX="0" width="636.06" anchorOffsetY="0" height="756.91" horizontalCenter="0" top="170">
-            <e:List id="list" anchorOffsetX="0" anchorOffsetY="0" left="9" right="13" top="158" bottom="8" useVirtualLayout="false">
-		<e:layout>
-			<e:VerticalLayout paddingLeft="10"/>
-		</e:layout>
-		</e:List>
-        </e:Scroller>
+
+
 		
 		<e:Image id="exitButton" source="btn_exit_png" left="4" top="3"/>
+		<e:ViewStack id="viewstack" width="637" includeIn="record" anchorOffsetY="0" touchChildren="true" touchEnabled="true" touchThrough="true" scaleX="1" scaleY="1" height="913" horizontalCenter="0.5" top="0" selectedIndex="1">
+			<e:Group name="识记" touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="0" top="0">
+			<e:Label text="请选择你开始识记的单词关" size="40" bold="true" textColor="0xEFE7E1" x.record="75" y.record="99" x="73" y="0"/>
+			<e:Scroller id="scroller" anchorOffsetX="0" width="636.06" anchorOffsetY="0" height="858.91" x.record="2" y.record="170" x="0" y="71">
+				<e:List id="list" anchorOffsetX="0" anchorOffsetY="0" left="9" right="13" top="158" bottom="8" useVirtualLayout="false">
+				<e:layout>
+					<e:VerticalLayout paddingLeft="10"/>
+				</e:layout>
+				</e:List>
+			</e:Scroller>
+			</e:Group>
+			<e:Group name="复习" touchChildren="true" touchEnabled="true" touchThrough="true" horizontalCenter="5" x="10" y="94.85"  anchorOffsetY="0" height="941.24">
+				<e:Label text="请选择你开始复习的单词关" size="40" bold="true" textColor="0xEFE7E1" x="73" y="0"/>
+				<e:Scroller id="scroller1" anchorOffsetX="0" width="636.06" anchorOffsetY="0" height="774.06" x="-9.09" y="71">
+				<e:List id="list1" anchorOffsetX="0" anchorOffsetY="0" left="9" right="13" top="158" bottom="8" useVirtualLayout="false">
+					<e:layout>
+					<e:VerticalLayout paddingLeft="10"/>
+					</e:layout>
+				</e:List>
+				</e:Scroller>
+				<e:Group id="sureBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="1" top="869">
+					<e:Image y="0" source="button2_png" x="0"/>
+					<e:Label text="确定" x="108" y="15"/>
+				</e:Group>
+			</e:Group>
+		</e:ViewStack>
+		<e:TabBar id="tabbar" width="570" height="88" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="0" bottom="0">
+			<e:layout>
+			<e:HorizontalLayout horizontalAlign="center" paddingLeft="20"/>
+			</e:layout>
+		</e:TabBar>
 	</e:Group>
+
+	
 </e:Skin>
