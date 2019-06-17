@@ -35,8 +35,8 @@
       "packagename": "com.adair"
     },
     "ios": {
-      "appname": "高速记单词",
-      "packagename": "com.companyname",
+      "appname": "StudyEn",
+      "packagename": "com.adair",
       "hybrid": false
     }
   }

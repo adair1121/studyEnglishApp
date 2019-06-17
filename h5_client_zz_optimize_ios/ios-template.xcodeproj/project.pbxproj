@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2236040822B3AB8500F4C496 /* README_IOS.md in Resources */ = {isa = PBXBuildFile; fileRef = 84860E512179DA92001FCEE7 /* README_IOS.md */; };
 		305DF7A3200D95C5008022B6 /* game in Resources */ = {isa = PBXBuildFile; fileRef = 305DF7A2200D95C5008022B6 /* game */; };
 		306A7A92200C83F500E1EBB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A7A91200C83F500E1EBB6 /* main.m */; };
 		306A7A95200C83F500E1EBB6 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 306A7A94200C83F500E1EBB6 /* AppDelegate.mm */; };
@@ -35,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		305DF7A2200D95C5008022B6 /* game */ = {isa = PBXFileReference; lastKnownFileType = folder; name = game; path = assets/game; sourceTree = "<group>"; };
-		306A7A8D200C83F500E1EBB6 /* 高速记单词.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "高速记单词.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		306A7A8D200C83F500E1EBB6 /* StudyEn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyEn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		306A7A91200C83F500E1EBB6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		306A7A93200C83F500E1EBB6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		306A7A94200C83F500E1EBB6 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -115,7 +114,7 @@
 		306A7A8E200C83F500E1EBB6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				306A7A8D200C83F500E1EBB6 /* 高速记单词.app */,
+				306A7A8D200C83F500E1EBB6 /* StudyEn.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,9 +178,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		306A7A8C200C83F500E1EBB6 /* 高速记单词 */ = {
+		306A7A8C200C83F500E1EBB6 /* StudyEn */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 306A7AA4200C83F500E1EBB6 /* Build configuration list for PBXNativeTarget "高速记单词" */;
+			buildConfigurationList = 306A7AA4200C83F500E1EBB6 /* Build configuration list for PBXNativeTarget "StudyEn" */;
 			buildPhases = (
 				306A7A89200C83F500E1EBB6 /* Sources */,
 				306A7A8A200C83F500E1EBB6 /* Frameworks */,
@@ -191,9 +190,9 @@
 			);
 			dependencies = (
 			);
-			name = "高速记单词";
-			productName = "高速记单词";
-			productReference = 306A7A8D200C83F500E1EBB6 /* 高速记单词.app */;
+			name = StudyEn;
+			productName = StudyEn;
+			productReference = 306A7A8D200C83F500E1EBB6 /* StudyEn.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +224,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				306A7A8C200C83F500E1EBB6 /* 高速记单词 */,
+				306A7A8C200C83F500E1EBB6 /* StudyEn */,
 			);
 		};
 /* End PBXProject section */
@@ -235,7 +234,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2236040822B3AB8500F4C496 /* README_IOS.md in Resources */,
 				305DF7A3200D95C5008022B6 /* game in Resources */,
 				306A7A9D200C83F500E1EBB6 /* Assets.xcassets in Resources */,
 				30CE267B2063AC44000F4D0D /* icon.png in Resources */,
@@ -361,7 +359,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/egret-libs";
-				PRODUCT_BUNDLE_IDENTIFIER = com.adair1121;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -377,7 +375,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/egret-libs";
-				PRODUCT_BUNDLE_IDENTIFIER = com.adair1121;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -394,7 +392,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		306A7AA4200C83F500E1EBB6 /* Build configuration list for PBXNativeTarget "高速记单词" */ = {
+		306A7AA4200C83F500E1EBB6 /* Build configuration list for PBXNativeTarget "StudyEn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				306A7AA5200C83F500E1EBB6 /* Debug */,

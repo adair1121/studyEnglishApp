@@ -727,8 +727,10 @@ window.skins={};
 	__extends(MyCheckBoxSkin, _super);
 	function MyCheckBoxSkin() {
 		_super.call(this);
-		this.skinParts = ["labelDisplay"];
+		this.skinParts = [];
 		
+		this.height = 50;
+		this.width = 50;
 		this.elementsContent = [this._Group1_i()];
 		this.states = [
 			new eui.State ("up",
@@ -768,7 +770,7 @@ window.skins={};
 		t.percentHeight = 100;
 		t.percentWidth = 100;
 		t.layout = this._HorizontalLayout1_i();
-		t.elementsContent = [this._Image1_i(),this.labelDisplay_i()];
+		t.elementsContent = [this._Image1_i()];
 		return t;
 	};
 	_proto._HorizontalLayout1_i = function () {
@@ -781,20 +783,130 @@ window.skins={};
 		this._Image1 = t;
 		t.alpha = 1;
 		t.fillMode = "scale";
+		t.percentHeight = 100;
 		t.source = "checkbox_unselect_png";
+		t.percentWidth = 100;
+		return t;
+	};
+	return MyCheckBoxSkin;
+})(eui.Skin);generateEUI.paths['resource/skins/components/MyNavButton.exml'] = window.MyNavButton = (function (_super) {
+	__extends(MyNavButton, _super);
+	function MyNavButton() {
+		_super.call(this);
+		this.skinParts = ["labelDisplay","iconDisplay"];
+		
+		this.minHeight = 50;
+		this.minWidth = 100;
+		this.elementsContent = [this._Image1_i(),this.labelDisplay_i(),this.iconDisplay_i()];
+		this.states = [
+			new eui.State ("up",
+				[
+					new eui.SetProperty("_Image1","y",-1)
+				])
+			,
+			new eui.State ("down",
+				[
+					new eui.SetProperty("_Image1","source","navBtn1_down_png"),
+					new eui.SetProperty("labelDisplay","width",115),
+					new eui.SetProperty("labelDisplay","height",25),
+					new eui.SetProperty("labelDisplay","x",9),
+					new eui.SetProperty("labelDisplay","y",59)
+				])
+			,
+			new eui.State ("disabled",
+				[
+					new eui.SetProperty("_Image1","alpha",0.5)
+				])
+		];
+		
+		eui.Binding.$bindProperties(this, ["hostComponent.data"],[0],this.labelDisplay,"text");
+	}
+	var _proto = MyNavButton.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		this._Image1 = t;
+		t.source = "navBtn1_up_png";
 		return t;
 	};
 	_proto.labelDisplay_i = function () {
 		var t = new eui.Label();
 		this.labelDisplay = t;
-		t.fontFamily = "Tahoma";
+		t.anchorOffsetY = 0;
+		t.height = 25;
 		t.size = 20;
 		t.textAlign = "center";
-		t.textColor = 0x707070;
+		t.textColor = 0xFFFFFF;
 		t.verticalAlign = "middle";
+		t.width = 115;
+		t.x = 10;
+		t.y = 59;
 		return t;
 	};
-	return MyCheckBoxSkin;
+	_proto.iconDisplay_i = function () {
+		var t = new eui.Image();
+		this.iconDisplay = t;
+		t.horizontalCenter = 0;
+		t.verticalCenter = 0;
+		return t;
+	};
+	return MyNavButton;
+})(eui.Skin);generateEUI.paths['resource/skins/components/SingleWordSelectItemSkin.exml'] = window.SingleWordSelectItemSkin = (function (_super) {
+	__extends(SingleWordSelectItemSkin, _super);
+	function SingleWordSelectItemSkin() {
+		_super.call(this);
+		this.skinParts = ["font","checkbox"];
+		
+		this.height = 57;
+		this.width = 300;
+		this.elementsContent = [this._Image1_i(),this.font_i(),this.checkbox_i()];
+	}
+	var _proto = SingleWordSelectItemSkin.prototype;
+
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetY = 0;
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.source = "main_white_block_png";
+		t.top = 0;
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.font_i = function () {
+		var t = new eui.Label();
+		this.font = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 40;
+		t.left = 24;
+		t.text = "Wold";
+		t.textAlign = "left";
+		t.textColor = 0x000000;
+		t.touchEnabled = true;
+		t.verticalAlign = "middle";
+		t.verticalCenter = -0.5;
+		t.width = 180;
+		t.x = 24;
+		t.y = 14;
+		return t;
+	};
+	_proto.checkbox_i = function () {
+		var t = new eui.CheckBox();
+		this.checkbox = t;
+		t.enabled = true;
+		t.label = "CheckBox";
+		t.selected = false;
+		t.skinName = "MyCheckBoxSkin";
+		t.touchChildren = false;
+		t.touchEnabled = true;
+		t.x = 225;
+		t.y = 3;
+		return t;
+	};
+	return SingleWordSelectItemSkin;
 })(eui.Skin);generateEUI.paths['resource/skins/components/TestSceneItemSkin.exml'] = window.TestSceneItemSkin = (function (_super) {
 	__extends(TestSceneItemSkin, _super);
 	function TestSceneItemSkin() {
@@ -968,6 +1080,60 @@ window.skins={};
 		return t;
 	};
 	return warnFrameSkin;
+})(eui.Skin);generateEUI.paths['resource/skins/components/WordRecoverItemSkin.exml'] = window.WordRecoverItemSkin = (function (_super) {
+	__extends(WordRecoverItemSkin, _super);
+	function WordRecoverItemSkin() {
+		_super.call(this);
+		this.skinParts = ["itembg","label","checkBox","itemGroup"];
+		
+		this.height = 71;
+		this.width = 618;
+		this.elementsContent = [this.itemGroup_i()];
+	}
+	var _proto = WordRecoverItemSkin.prototype;
+
+	_proto.itemGroup_i = function () {
+		var t = new eui.Group();
+		this.itemGroup = t;
+		t.horizontalCenter = 0;
+		t.top = 3;
+		t.touchChildren = false;
+		t.touchEnabled = true;
+		t.touchThrough = false;
+		t.elementsContent = [this.itembg_i(),this.label_i(),this.checkBox_i()];
+		return t;
+	};
+	_proto.itembg_i = function () {
+		var t = new eui.Image();
+		this.itembg = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.source = "item_up_png";
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.label_i = function () {
+		var t = new eui.Label();
+		this.label = t;
+		t.horizontalCenter = 0;
+		t.text = "高速记单词教学";
+		t.top = 14;
+		t.touchEnabled = false;
+		return t;
+	};
+	_proto.checkBox_i = function () {
+		var t = new eui.CheckBox();
+		this.checkBox = t;
+		t.anchorOffsetX = 0;
+		t.label = "CheckBox";
+		t.skinName = "MyCheckBoxSkin";
+		t.width = 50;
+		t.x = 546;
+		t.y = 5.5;
+		return t;
+	};
+	return WordRecoverItemSkin;
 })(eui.Skin);generateEUI.paths['resource/skins/GameLoadingUISkin.exml'] = window.GameLoadingUISkin = (function (_super) {
 	__extends(GameLoadingUISkin, _super);
 	function GameLoadingUISkin() {
@@ -1291,6 +1457,228 @@ window.skins={};
 		return t;
 	};
 	return RecordSceneSkin;
+})(eui.Skin);generateEUI.paths['resource/skins/SingleWordSelectSkin.exml'] = window.SingleWordSelectSkin = (function (_super) {
+	__extends(SingleWordSelectSkin, _super);
+	function SingleWordSelectSkin() {
+		_super.call(this);
+		this.skinParts = ["exitButton","buttonLabel","sureBtn","delBtn","list","scroller","title","selectCheck","selectAll"];
+		
+		this.height = 1136;
+		this.width = 640;
+		this.elementsContent = [this._Group1_i()];
+	}
+	var _proto = SingleWordSelectSkin.prototype;
+
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.top = 0;
+		t.elementsContent = [this._Image1_i(),this._Image2_i(),this.exitButton_i(),this.sureBtn_i(),this.delBtn_i(),this.scroller_i(),this.title_i(),this.selectAll_i()];
+		return t;
+	};
+	_proto._Image1_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetY = 0;
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.source = "main_white_block_png";
+		t.top = 0;
+		return t;
+	};
+	_proto._Image2_i = function () {
+		var t = new eui.Image();
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 84;
+		t.left = 0;
+		t.right = 0;
+		t.source = "top_bg_jpg";
+		t.top = 0;
+		return t;
+	};
+	_proto.exitButton_i = function () {
+		var t = new eui.Image();
+		this.exitButton = t;
+		t.left = 4;
+		t.source = "btn_exit_png";
+		t.top = 3;
+		return t;
+	};
+	_proto.sureBtn_i = function () {
+		var t = new eui.Group();
+		this.sureBtn = t;
+		t.bottom = 61;
+		t.horizontalCenter = 0;
+		t.touchChildren = false;
+		t.touchEnabled = true;
+		t.touchThrough = false;
+		t.elementsContent = [this._Image3_i(),this.buttonLabel_i()];
+		return t;
+	};
+	_proto._Image3_i = function () {
+		var t = new eui.Image();
+		t.source = "button2_png";
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto.buttonLabel_i = function () {
+		var t = new eui.Label();
+		this.buttonLabel = t;
+		t.horizontalCenter = 0.5;
+		t.text = "开始复习";
+		t.verticalCenter = 0;
+		return t;
+	};
+	_proto.delBtn_i = function () {
+		var t = new eui.Group();
+		this.delBtn = t;
+		t.anchorOffsetX = 0;
+		t.right = 20;
+		t.top = 12;
+		t.touchChildren = false;
+		t.touchEnabled = true;
+		t.touchThrough = false;
+		t.visible = false;
+		t.width = 111;
+		t.elementsContent = [this._Image4_i(),this._Label1_i()];
+		return t;
+	};
+	_proto._Image4_i = function () {
+		var t = new eui.Image();
+		t.bottom = 0;
+		t.left = 0;
+		t.right = 0;
+		t.source = "button2_png";
+		t.top = 0;
+		return t;
+	};
+	_proto._Label1_i = function () {
+		var t = new eui.Label();
+		t.horizontalCenter = 0.5;
+		t.text = "删除";
+		t.verticalCenter = 0;
+		return t;
+	};
+	_proto.scroller_i = function () {
+		var t = new eui.Scroller();
+		this.scroller = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 869.7;
+		t.horizontalCenter = 0;
+		t.top = 91;
+		t.width = 630.3;
+		t.viewport = this.list_i();
+		return t;
+	};
+	_proto.list_i = function () {
+		var t = new eui.List();
+		this.list = t;
+		t.itemRendererSkinName = SingleWordSelectItemSkin;
+		t.useVirtualLayout = false;
+		t.layout = this._TileLayout1_i();
+		t.dataProvider = this._ArrayCollection1_i();
+		return t;
+	};
+	_proto._TileLayout1_i = function () {
+		var t = new eui.TileLayout();
+		t.horizontalAlign = "center";
+		t.orientation = "rows";
+		t.requestedColumnCount = 2;
+		return t;
+	};
+	_proto._ArrayCollection1_i = function () {
+		var t = new eui.ArrayCollection();
+		t.source = [this._Object1_i(),this._Object2_i(),this._Object3_i(),this._Object4_i(),this._Object5_i(),this._Object6_i(),this._Object7_i(),this._Object8_i(),this._Object9_i()];
+		return t;
+	};
+	_proto._Object1_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object2_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object3_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object4_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object5_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object6_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object7_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object8_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto._Object9_i = function () {
+		var t = {};
+		t.test = "null";
+		return t;
+	};
+	_proto.title_i = function () {
+		var t = new eui.Label();
+		this.title = t;
+		t.horizontalCenter = 0;
+		t.text = "请选择需要复习的单词";
+		t.top = 27;
+		return t;
+	};
+	_proto.selectAll_i = function () {
+		var t = new eui.Group();
+		this.selectAll = t;
+		t.bottom = 66;
+		t.left = 27;
+		t.touchChildren = false;
+		t.touchEnabled = true;
+		t.touchThrough = false;
+		t.elementsContent = [this.selectCheck_i(),this._Label2_i()];
+		return t;
+	};
+	_proto.selectCheck_i = function () {
+		var t = new eui.CheckBox();
+		this.selectCheck = t;
+		t.label = "全选";
+		t.skinName = "MyCheckBoxSkin";
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		t.bold = true;
+		t.text = "全选";
+		t.textColor = 0x000000;
+		t.x = 56;
+		t.y = 12;
+		return t;
+	};
+	return SingleWordSelectSkin;
 })(eui.Skin);generateEUI.paths['resource/skins/TeachMainSceneSkin.exml'] = window.TeachMainSceneSkin = (function (_super) {
 	__extends(TeachMainSceneSkin, _super);
 	function TeachMainSceneSkin() {
@@ -1758,27 +2146,35 @@ window.skins={};
 	__extends(WordLibLevelSelectSkin, _super);
 	function WordLibLevelSelectSkin() {
 		_super.call(this);
-		this.skinParts = ["list","scroller","exitButton"];
+		this.skinParts = ["exitButton","list","scroller","list1","scroller1","sureBtn","viewstack","tabbar"];
 		
 		this.currentState = "record";
 		this.height = 1136;
 		this.width = 640;
-		this.elementsContent = [this._Group1_i()];
+		this.elementsContent = [this._Group3_i()];
+		this.viewstack_i();
+		
 		this.states = [
 			new eui.State ("record",
 				[
+					new eui.AddItems("viewstack","_Group3",2,"tabbar"),
+					new eui.SetProperty("_Label1","x",75),
+					new eui.SetProperty("_Label1","y",99),
+					new eui.SetProperty("scroller","x",2),
+					new eui.SetProperty("scroller","y",170)
 				])
 		];
 	}
 	var _proto = WordLibLevelSelectSkin.prototype;
 
-	_proto._Group1_i = function () {
+	_proto._Group3_i = function () {
 		var t = new eui.Group();
+		this._Group3 = t;
 		t.bottom = 0;
 		t.left = 0;
 		t.right = 0;
 		t.top = 0;
-		t.elementsContent = [this._Image1_i(),this._Label1_i(),this.scroller_i(),this.exitButton_i()];
+		t.elementsContent = [this._Image1_i(),this.exitButton_i(),this.tabbar_i()];
 		return t;
 	};
 	_proto._Image1_i = function () {
@@ -1790,14 +2186,51 @@ window.skins={};
 		t.top = 0;
 		return t;
 	};
+	_proto.exitButton_i = function () {
+		var t = new eui.Image();
+		this.exitButton = t;
+		t.left = 4;
+		t.source = "btn_exit_png";
+		t.top = 3;
+		return t;
+	};
+	_proto.viewstack_i = function () {
+		var t = new eui.ViewStack();
+		this.viewstack = t;
+		t.anchorOffsetY = 0;
+		t.height = 913;
+		t.horizontalCenter = 0.5;
+		t.scaleX = 1;
+		t.scaleY = 1;
+		t.selectedIndex = 1;
+		t.top = 0;
+		t.touchChildren = true;
+		t.touchEnabled = true;
+		t.touchThrough = true;
+		t.width = 637;
+		t.elementsContent = [this._Group1_i(),this._Group2_i()];
+		return t;
+	};
+	_proto._Group1_i = function () {
+		var t = new eui.Group();
+		t.horizontalCenter = 0;
+		t.name = "识记";
+		t.top = 0;
+		t.touchChildren = true;
+		t.touchEnabled = true;
+		t.touchThrough = true;
+		t.elementsContent = [this._Label1_i(),this.scroller_i()];
+		return t;
+	};
 	_proto._Label1_i = function () {
 		var t = new eui.Label();
+		this._Label1 = t;
 		t.bold = true;
-		t.horizontalCenter = 0;
 		t.size = 40;
 		t.text = "请选择你开始识记的单词关";
 		t.textColor = 0xEFE7E1;
-		t.top = 99;
+		t.x = 73;
+		t.y = 0;
 		return t;
 	};
 	_proto.scroller_i = function () {
@@ -1805,10 +2238,10 @@ window.skins={};
 		this.scroller = t;
 		t.anchorOffsetX = 0;
 		t.anchorOffsetY = 0;
-		t.height = 756.91;
-		t.horizontalCenter = 0;
-		t.top = 170;
+		t.height = 858.91;
 		t.width = 636.06;
+		t.x = 0;
+		t.y = 71;
 		t.viewport = this.list_i();
 		return t;
 	};
@@ -1830,12 +2263,101 @@ window.skins={};
 		t.paddingLeft = 10;
 		return t;
 	};
-	_proto.exitButton_i = function () {
+	_proto._Group2_i = function () {
+		var t = new eui.Group();
+		t.anchorOffsetY = 0;
+		t.height = 941.24;
+		t.horizontalCenter = 5;
+		t.name = "复习";
+		t.touchChildren = true;
+		t.touchEnabled = true;
+		t.touchThrough = true;
+		t.x = 10;
+		t.y = 94.85;
+		t.elementsContent = [this._Label2_i(),this.scroller1_i(),this.sureBtn_i()];
+		return t;
+	};
+	_proto._Label2_i = function () {
+		var t = new eui.Label();
+		t.bold = true;
+		t.size = 40;
+		t.text = "请选择你开始复习的单词关";
+		t.textColor = 0xEFE7E1;
+		t.x = 73;
+		t.y = 0;
+		return t;
+	};
+	_proto.scroller1_i = function () {
+		var t = new eui.Scroller();
+		this.scroller1 = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.height = 774.06;
+		t.width = 636.06;
+		t.x = -9.09;
+		t.y = 71;
+		t.viewport = this.list1_i();
+		return t;
+	};
+	_proto.list1_i = function () {
+		var t = new eui.List();
+		this.list1 = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.bottom = 8;
+		t.left = 9;
+		t.right = 13;
+		t.top = 158;
+		t.useVirtualLayout = false;
+		t.layout = this._VerticalLayout2_i();
+		return t;
+	};
+	_proto._VerticalLayout2_i = function () {
+		var t = new eui.VerticalLayout();
+		t.paddingLeft = 10;
+		return t;
+	};
+	_proto.sureBtn_i = function () {
+		var t = new eui.Group();
+		this.sureBtn = t;
+		t.horizontalCenter = 1;
+		t.top = 869;
+		t.touchChildren = false;
+		t.touchEnabled = true;
+		t.touchThrough = false;
+		t.elementsContent = [this._Image2_i(),this._Label3_i()];
+		return t;
+	};
+	_proto._Image2_i = function () {
 		var t = new eui.Image();
-		this.exitButton = t;
-		t.left = 4;
-		t.source = "btn_exit_png";
-		t.top = 3;
+		t.source = "button2_png";
+		t.x = 0;
+		t.y = 0;
+		return t;
+	};
+	_proto._Label3_i = function () {
+		var t = new eui.Label();
+		t.text = "确定";
+		t.x = 108;
+		t.y = 15;
+		return t;
+	};
+	_proto.tabbar_i = function () {
+		var t = new eui.TabBar();
+		this.tabbar = t;
+		t.anchorOffsetX = 0;
+		t.anchorOffsetY = 0;
+		t.bottom = 0;
+		t.height = 88;
+		t.horizontalCenter = 0;
+		t.width = 570;
+		t.layout = this._HorizontalLayout1_i();
+		return t;
+	};
+	_proto._HorizontalLayout1_i = function () {
+		var t = new eui.HorizontalLayout();
+		t.horizontalAlign = "center";
+		t.paddingLeft = 20;
 		return t;
 	};
 	return WordLibLevelSelectSkin;

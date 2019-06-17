@@ -78,7 +78,7 @@ class SingleWordSelect extends BaseEuiView{
 				}
 				//删除内存中的生词
 				let delId:number[] = [];
-				for(let i:number = this.recoverData.length-1;i<=0;i--){
+				for(let i:number = this.recoverData.length-1;i>=0;i--){
 					let itemConfig:LevelConfig = this.recoverData[i];
 					let word = egret.localStorage.getItem(itemConfig.id.toString());
 					if(!!word){

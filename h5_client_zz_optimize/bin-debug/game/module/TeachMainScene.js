@@ -50,7 +50,9 @@ var TeachMainScene = (function (_super) {
                     var wordidArr = wordIds.split("|");
                     wordidArr.forEach(function (id) {
                         var itemConfig = JSON.parse(egret.localStorage.getItem(id.toString()));
-                        wordData_1.push(itemConfig);
+                        if (itemConfig) {
+                            wordData_1.push(itemConfig);
+                        }
                     });
                 }
                 else {

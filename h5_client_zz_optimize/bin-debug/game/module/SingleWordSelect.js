@@ -86,7 +86,7 @@ var SingleWordSelect = (function (_super) {
                 }
                 //删除内存中的生词
                 var delId = [];
-                for (var i = this.recoverData.length - 1; i <= 0; i--) {
+                for (var i = this.recoverData.length - 1; i >= 0; i--) {
                     var itemConfig = this.recoverData[i];
                     var word = egret.localStorage.getItem(itemConfig.id.toString());
                     if (!!word) {
