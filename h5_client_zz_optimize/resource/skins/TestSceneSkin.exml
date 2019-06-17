@@ -21,9 +21,9 @@
 				<e:VerticalLayout/>
 			</e:layout>
 		</e:List>
-		<e:Group id="submitBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0.5" top="1015">
-			<e:Image y="0" source="button2_png" x="0"/>
-			<e:Label text="提交" x="108" y="15"/>
+		<e:Group id="submitBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0" top="1015">
+			<e:Image y="0" source="button2_png" x="0" anchorOffsetX="0" width="288.48" anchorOffsetY="0" height="94.66"/>
+			<e:Label text="提交" horizontalCenter="0" verticalCenter="0"/>
 		</e:Group>
 	</e:Group>
 </e:Skin>

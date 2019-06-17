@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="WordRecoverItemSkin" width="618" height="71" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Group id="itemGroup" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0" top="3">
-		<e:Image id="itembg" anchorOffsetX="0" anchorOffsetY="0" x="0" y="0" source="item_up_png"/>
-		<e:Label id="label" text="高速记单词教学" touchEnabled="false" horizontalCenter="0" top="14"/>
-		<e:CheckBox id="checkBox" label="CheckBox" x="546" y="5.5" skinName="MyCheckBoxSkin" anchorOffsetX="0" width="50"/>
+	<e:Group id="itemGroup" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0.5" top="3" anchorOffsetX="0" width="617">
+		<e:Image id="itembg" anchorOffsetX="0" anchorOffsetY="0" x="0" y="0" source="item_up_png" height="66"/>
+		<e:Label id="label" text="高速记单词教学" touchEnabled="false" horizontalCenter="0.5" top="19" size="25"/>
+		<e:CheckBox id="checkBox" label="CheckBox" x="543" y="12.5" skinName="MyCheckBoxSkin" anchorOffsetX="0" width="38" anchorOffsetY="0" height="38"/>
 	</e:Group>
 </e:Skin>

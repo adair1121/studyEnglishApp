@@ -4,9 +4,9 @@
 		<e:Image source="main_white_block_png" anchorOffsetY="0" left="0" right="0" top="0" bottom="0"/>
 		<e:Image source="top_bg_jpg" anchorOffsetY="0" anchorOffsetX="0" height="84" left="0" right="0" top="0"/>
 		<e:Image id="exitButton" source="btn_exit_png" left="4" top="3"/>
-		<e:Group id="sureBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0" bottom="61">
-			<e:Image y="0" source="button2_png" x="0"/>
-			<e:Label id="buttonLabel" text="开始复习" horizontalCenter="0.5" verticalCenter="0"/>
+		<e:Group id="sureBtn" touchChildren="false" touchEnabled="true" touchThrough="false" horizontalCenter="0" bottom="46" anchorOffsetX="0" width="292.27" anchorOffsetY="0" height="102.1">
+			<e:Image y="0" source="button2_png" x="0" anchorOffsetX="0" width="298.67" anchorOffsetY="0" height="98"/>
+			<e:Label id="buttonLabel" text="开始复习" horizontalCenter="-0.1349999999999909" verticalCenter="2.950000000000003"/>
 		</e:Group>
 		<e:Group id="delBtn" touchChildren="false" touchEnabled="true" touchThrough="false" right="20" anchorOffsetX="0" width="111" top="12" visible="false">
 			<e:Image source="button2_png" left="0" top="0" right="0" bottom="0"/>
