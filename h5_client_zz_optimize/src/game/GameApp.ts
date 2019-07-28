@@ -5,6 +5,11 @@ class GameApp extends BaseClass {
 
 	public preload_load_count:number = 0;
 
+	public curRoute:string = "";
+
+	public curLib:string = "";
+
+	public checkResultStr:string = "已检查0个/错误0个/正确率100%";
 	public constructor() {
 		super();
 	}

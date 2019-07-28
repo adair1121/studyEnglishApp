@@ -16,6 +16,9 @@ var GameApp = (function (_super) {
     function GameApp() {
         var _this = _super.call(this) || this;
         _this.preload_load_count = 0;
+        _this.curRoute = "";
+        _this.curLib = "";
+        _this.checkResultStr = "已检查0个/错误0个/正确率100%";
         return _this;
     }
     GameApp.ins = function () {

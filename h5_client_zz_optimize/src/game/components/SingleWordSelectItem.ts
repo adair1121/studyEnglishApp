@@ -5,20 +5,31 @@ class SingleWordSelectItem extends BaseItemRender{
 	private trans:string = "";
 	private audio:string = "";
 	private fontLab:string = "";
+	private rect:eui.Rect;
+	private wrongImg:eui.Image;
 	public constructor() {
 		super();
 		this.skinName = "SingleWordSelectItemSkin"
 	}
 	protected childrenCreated():void{
+		this.wrongImg.touchEnabled = false;
 		this.checkbox.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
 		this.font.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this)
 	}
 	private selectBoo = false;
+	private wrongBoo = false;
 	private onTouchTap(evt:egret.TouchEvent):void{
 		switch(evt.target){
 			case this.checkbox:
-				this.selectBoo = !this.selectBoo;
-				this.checkbox.selected = this.selectBoo;
+				if(GameApp.ins().curRoute != "check"){
+					this.selectBoo = !this.selectBoo;
+					this.checkbox.selected = this.selectBoo;
+				}else{
+					this.rect.visible = true;
+					this.checkBoo = true;
+					this.wrongBoo = !this.wrongBoo;
+					this.wrongImg.visible = this.wrongBoo;
+				}
 				break;
 			case this.font:
 				this.initialize();
@@ -33,6 +44,12 @@ class SingleWordSelectItem extends BaseItemRender{
 		this.selectBoo = value;
 		this.checkbox.selected = value;
 	}
+	public get isWrong():boolean{
+		return this.wrongBoo;
+	}
+	public get isCheck():boolean{
+		return this.checkBoo;
+	}
 	protected dataChanged(): void {
 		if(!!this.data){
 			this.font.text = this.data.font;
@@ -43,7 +60,12 @@ class SingleWordSelectItem extends BaseItemRender{
 			}
 		}
 	}
+	private checkBoo:boolean = false;
 	private initialize():void{
+		if(GameApp.ins().curRoute == "check"){
+			this.rect.visible = true;
+			this.checkBoo = true;
+		}
 		this.count +=1;
 		this.font.text = this.count %2 == 0?this.trans:this.fontLab;
 		if(this.audio){

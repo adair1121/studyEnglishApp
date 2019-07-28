@@ -12,6 +12,8 @@ var RecordScene = (function (_super) {
     __extends(RecordScene, _super);
     function RecordScene() {
         var _this = _super.call(this) || this;
+        _this._route = "";
+        _this.wordNum = 0;
         _this.skinName = "RecordSceneSkin";
         return _this;
     }
@@ -34,30 +36,45 @@ var RecordScene = (function (_super) {
         for (var key in dataConfig) {
             arr.push(dataConfig[key]);
         }
+        this.wordNum = arr.length;
         this.clickReadpanel.dataProvider(arr);
+        if (param[0].route) {
+            this._route = param[0].route;
+        }
         this.pageNum.text = this.clickReadpanel.m_curPage + "/" + this.clickReadpanel.m_pageNum;
         this.refreshArrow();
     };
     RecordScene.prototype.onLeft = function () {
+        if (this.clickReadpanel.m_curPage == 1) {
+            return;
+        }
         this.clickReadpanel.refreshData(-1);
         this.refreshArrow();
     };
     RecordScene.prototype.onRight = function () {
+        if (this.clickReadpanel.m_curPage >= this.clickReadpanel.m_pageNum) {
+            //弹窗奖励并退出
+            if (this._route == "study") {
+                ViewManager.ins().open(WarnWin, { tips: "恭喜您，顺利通关并获得了金币*" + (this.wordNum * 5) });
+                MessageCenter.ins().dispatch("passLevel");
+                this.close();
+                ViewManager.ins().close(RecordScene);
+            }
+            return;
+        }
         this.clickReadpanel.refreshData(1);
         this.refreshArrow();
     };
     RecordScene.prototype.refreshArrow = function () {
-        if (this.clickReadpanel.m_curPage >= this.clickReadpanel.m_pageNum) {
-            this.btn_right.visible = false;
-            this.btn_left.visible = true;
-        }
-        else if (this.clickReadpanel.m_curPage == 1) {
-            this.btn_left.visible = false;
-            this.btn_right.visible = true;
-        }
-        else {
-            this.btn_left.visible = this.btn_right.visible = true;
-        }
+        // if(this.clickReadpanel.m_curPage >= this.clickReadpanel.m_pageNum){
+        // 	this.btn_right.visible = false;
+        // 	this.btn_left.visible = true;
+        // }else if(this.clickReadpanel.m_curPage == 1){
+        // 	this.btn_left.visible = false;
+        // 	this.btn_right.visible = true;
+        // }else{
+        // 	this.btn_left.visible = this.btn_right.visible = true;
+        // }
         this.pageNum.text = this.clickReadpanel.m_curPage + "/" + this.clickReadpanel.m_pageNum;
     };
     RecordScene.prototype.onTouch = function (evt) {

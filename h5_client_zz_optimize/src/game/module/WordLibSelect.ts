@@ -26,6 +26,7 @@ class WordLibSelect extends BaseEuiView{
 	}
 	private onItemTap(evt:eui.ItemTapEvent):void{
 		let grade = evt.itemIndex + 1;
+		GameApp.ins().curLib = this.words[evt.itemIndex];
 		if(this.dataObj[grade]){
 			ViewManager.ins().open(WordLibLevelSelect,{data:this.dataObj[grade],grade:grade});
 		}

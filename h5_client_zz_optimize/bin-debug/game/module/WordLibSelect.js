@@ -38,6 +38,7 @@ var WordLibSelect = (function (_super) {
     };
     WordLibSelect.prototype.onItemTap = function (evt) {
         var grade = evt.itemIndex + 1;
+        GameApp.ins().curLib = this.words[evt.itemIndex];
         if (this.dataObj[grade]) {
             ViewManager.ins().open(WordLibLevelSelect, { data: this.dataObj[grade], grade: grade });
         }

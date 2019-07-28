@@ -13,6 +13,7 @@ class SingleWordSelect extends BaseEuiView{
 	private route:string = "";
 	private buttonLabel:eui.Label;
 	private delBtn:eui.Group;
+	private checkRecordLab:eui.Label;
 	public constructor() {
 		super();
 		this.skinName = "SingleWordSelectSkin";
@@ -29,7 +30,14 @@ class SingleWordSelect extends BaseEuiView{
 				this.title.text = "我的生词本";
 				this.titleLab = "重新识记";
 				this.delBtn.visible = true;
+			}else if(this.route == "check"){
+				this.buttonLabel.text = "重新识记";
+				this.title.text = "开始检查";
+				this.delBtn.visible = false;
+				this.selectAll.visible = false;
+				this.checkRecordLab.visible = true;
 			}
+			GameApp.ins().curRoute = param[0].route;
 		}
 		this.list.itemRenderer = SingleWordSelectItem;
 		this.scroller.viewport = this.list;
@@ -39,6 +47,33 @@ class SingleWordSelect extends BaseEuiView{
 		this.sureBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
 		this.selectAll.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
 		this.delBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
+		this.list.addEventListener(eui.ItemTapEvent.ITEM_TAP,this.onItemTap,this);
+	}
+	private checkNum = 0;
+	private wrongNum = 0;
+	private onItemTap(evt:eui.ItemTapEvent):void{
+		if(GameApp.ins().curRoute == "check"){
+			let timeout = egret.setTimeout(()=>{
+				egret.clearTimeout(timeout);
+				let len:number = this.list.$children.length;
+				let checkNum = 0;
+				let wrongNum = 0;
+				for(let i:number = 0;i<len;i++){
+					let item:SingleWordSelectItem = this.list.getChildAt(i) as SingleWordSelectItem;
+					if(item.isWrong){
+						wrongNum+=1;
+					}
+					if(item.isCheck){
+						checkNum += 1;
+					}
+				}
+				let precent:number = ((len - wrongNum)/len*100)>>0;
+				let wrongStr:string = 
+				this.checkRecordLab.text = `已检查${checkNum}个/错误${wrongNum}个/正确率${precent}%`;
+				GameApp.ins().checkResultStr = this.checkRecordLab.text;
+			},this,500)
+			
+		}
 	}
 	private onTouchTap(evt:egret.TouchEvent):void{
 		switch(evt.target){
@@ -51,14 +86,14 @@ class SingleWordSelect extends BaseEuiView{
 					ViewManager.ins().open(WarnWin,{tips:"请至少选择7个单词~"})
 					return;
 				}else{
-					if(!this.route){
+					if(!this.route || this.route == "recover"){
 						this.writeWordToLocal();
 						//当前没有路由参数 默认为复习功能进入
 						ViewManager.ins().open(WarnWin,{tips:"已为您添加到生词本~请继续努力",callBack:()=>{
 							ViewManager.ins().open(RecordScene,{dataCfg:this.recoverData,title:"复习中"});
 							this.close();
 						},thisArg:this})
-					}else if(this.route == "TeachMainScene"){
+					}else if(this.route == "TeachMainScene" || this.route == "check"){
 						//生词本进入
 						ViewManager.ins().open(RecordScene,{dataCfg:this.recoverData,title:this.titleLab?this.titleLab:""});
 						this.close();
@@ -172,6 +207,9 @@ class SingleWordSelect extends BaseEuiView{
 		this.sureBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
 		this.selectAll.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
 		this.delBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onTouchTap,this);
+		this.list.removeEventListener(eui.ItemTapEvent.ITEM_TAP,this.onItemTap,this);
+		this.checkNum = 0;
+		this.wrongNum = 0;
 	}
 }
 ViewManager.ins().reg(SingleWordSelect, LayerManager.UI_Main);

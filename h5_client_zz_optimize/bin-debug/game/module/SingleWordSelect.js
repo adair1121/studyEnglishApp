@@ -16,6 +16,8 @@ var SingleWordSelect = (function (_super) {
         _this.wordData = [];
         _this.titleLab = "";
         _this.route = "";
+        _this.checkNum = 0;
+        _this.wrongNum = 0;
         _this.skinName = "SingleWordSelectSkin";
         return _this;
     }
@@ -36,6 +38,14 @@ var SingleWordSelect = (function (_super) {
                 this.titleLab = "重新识记";
                 this.delBtn.visible = true;
             }
+            else if (this.route == "check") {
+                this.buttonLabel.text = "重新识记";
+                this.title.text = "开始检查";
+                this.delBtn.visible = false;
+                this.selectAll.visible = false;
+                this.checkRecordLab.visible = true;
+            }
+            GameApp.ins().curRoute = param[0].route;
         }
         this.list.itemRenderer = SingleWordSelectItem;
         this.scroller.viewport = this.list;
@@ -45,6 +55,30 @@ var SingleWordSelect = (function (_super) {
         this.sureBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.selectAll.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.delBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
+        this.list.addEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap, this);
+    };
+    SingleWordSelect.prototype.onItemTap = function (evt) {
+        var _this = this;
+        if (GameApp.ins().curRoute == "check") {
+            var timeout_1 = egret.setTimeout(function () {
+                egret.clearTimeout(timeout_1);
+                var len = _this.list.$children.length;
+                var checkNum = 0;
+                var wrongNum = 0;
+                for (var i = 0; i < len; i++) {
+                    var item = _this.list.getChildAt(i);
+                    if (item.isWrong) {
+                        wrongNum += 1;
+                    }
+                    if (item.isCheck) {
+                        checkNum += 1;
+                    }
+                }
+                var precent = ((len - wrongNum) / len * 100) >> 0;
+                var wrongStr = _this.checkRecordLab.text = "\u5DF2\u68C0\u67E5" + checkNum + "\u4E2A/\u9519\u8BEF" + wrongNum + "\u4E2A/\u6B63\u786E\u7387" + precent + "%";
+                GameApp.ins().checkResultStr = _this.checkRecordLab.text;
+            }, this, 500);
+        }
     };
     SingleWordSelect.prototype.onTouchTap = function (evt) {
         var _this = this;
@@ -59,7 +93,7 @@ var SingleWordSelect = (function (_super) {
                     return;
                 }
                 else {
-                    if (!this.route) {
+                    if (!this.route || this.route == "recover") {
                         this.writeWordToLocal();
                         //当前没有路由参数 默认为复习功能进入
                         ViewManager.ins().open(WarnWin, { tips: "已为您添加到生词本~请继续努力", callBack: function () {
@@ -67,7 +101,7 @@ var SingleWordSelect = (function (_super) {
                                 _this.close();
                             }, thisArg: this });
                     }
-                    else if (this.route == "TeachMainScene") {
+                    else if (this.route == "TeachMainScene" || this.route == "check") {
                         //生词本进入
                         ViewManager.ins().open(RecordScene, { dataCfg: this.recoverData, title: this.titleLab ? this.titleLab : "" });
                         this.close();
@@ -185,6 +219,9 @@ var SingleWordSelect = (function (_super) {
         this.sureBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.selectAll.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.delBtn.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
+        this.list.removeEventListener(eui.ItemTapEvent.ITEM_TAP, this.onItemTap, this);
+        this.checkNum = 0;
+        this.wrongNum = 0;
     };
     return SingleWordSelect;
 }(BaseEuiView));

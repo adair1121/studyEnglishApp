@@ -17,18 +17,29 @@ var SingleWordSelectItem = (function (_super) {
         _this.audio = "";
         _this.fontLab = "";
         _this.selectBoo = false;
+        _this.wrongBoo = false;
+        _this.checkBoo = false;
         _this.skinName = "SingleWordSelectItemSkin";
         return _this;
     }
     SingleWordSelectItem.prototype.childrenCreated = function () {
+        this.wrongImg.touchEnabled = false;
         this.checkbox.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
         this.font.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onTouchTap, this);
     };
     SingleWordSelectItem.prototype.onTouchTap = function (evt) {
         switch (evt.target) {
             case this.checkbox:
-                this.selectBoo = !this.selectBoo;
-                this.checkbox.selected = this.selectBoo;
+                if (GameApp.ins().curRoute != "check") {
+                    this.selectBoo = !this.selectBoo;
+                    this.checkbox.selected = this.selectBoo;
+                }
+                else {
+                    this.rect.visible = true;
+                    this.checkBoo = true;
+                    this.wrongBoo = !this.wrongBoo;
+                    this.wrongImg.visible = this.wrongBoo;
+                }
                 break;
             case this.font:
                 this.initialize();
@@ -46,6 +57,20 @@ var SingleWordSelectItem = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(SingleWordSelectItem.prototype, "isWrong", {
+        get: function () {
+            return this.wrongBoo;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SingleWordSelectItem.prototype, "isCheck", {
+        get: function () {
+            return this.checkBoo;
+        },
+        enumerable: true,
+        configurable: true
+    });
     SingleWordSelectItem.prototype.dataChanged = function () {
         if (!!this.data) {
             this.font.text = this.data.font;
@@ -57,6 +82,10 @@ var SingleWordSelectItem = (function (_super) {
         }
     };
     SingleWordSelectItem.prototype.initialize = function () {
+        if (GameApp.ins().curRoute == "check") {
+            this.rect.visible = true;
+            this.checkBoo = true;
+        }
         this.count += 1;
         this.font.text = this.count % 2 == 0 ? this.trans : this.fontLab;
         if (this.audio) {
