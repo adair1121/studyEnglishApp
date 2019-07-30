@@ -4,4 +4,5 @@ class LevelConfig {
 	font:string;
 	trans:string;
 	level:number;
+	audio:string;
 }

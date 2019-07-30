@@ -22,6 +22,8 @@ class ClickReadItem extends BaseItemRender{
 			this.trans.text = this.data.trans;
 			if(this.data.audio){
 				this.audio = this.data.audio;
+			}else{
+				this.audio = this.data.font + ".mp3";
 			}
 		}
 	}
