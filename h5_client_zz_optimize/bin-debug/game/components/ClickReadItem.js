@@ -31,6 +31,9 @@ var ClickReadItem = (function (_super) {
             if (this.data.audio) {
                 this.audio = this.data.audio;
             }
+            else {
+                this.audio = this.data.font + ".mp3";
+            }
         }
     };
     ClickReadItem.prototype.initialize = function (data) {

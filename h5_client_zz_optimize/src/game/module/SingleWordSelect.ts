@@ -185,7 +185,7 @@ class SingleWordSelect extends BaseEuiView{
 		for(let i:number = 0;i<len;i++){
 			let item:SingleWordSelectItem = this.list.getChildAt(i) as SingleWordSelectItem;
 			if(!!item){
-				if(item.select){
+				if(item.select || item.isWrong){
 					count +=1;
 					this.recoverData.push(this.wordData[i]);
 				}

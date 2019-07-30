@@ -193,7 +193,7 @@ var SingleWordSelect = (function (_super) {
         for (var i = 0; i < len; i++) {
             var item = this.list.getChildAt(i);
             if (!!item) {
-                if (item.select) {
+                if (item.select || item.isWrong) {
                     count += 1;
                     this.recoverData.push(this.wordData[i]);
                 }
