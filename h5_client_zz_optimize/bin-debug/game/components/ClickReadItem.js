@@ -36,13 +36,15 @@ var ClickReadItem = (function (_super) {
             }
         }
     };
-    ClickReadItem.prototype.initialize = function (data) {
+    ClickReadItem.prototype.initialize = function (data, play) {
+        if (play === void 0) { play = true; }
         this.trans.visible = false;
         this.count = 0;
-        this.refreshItem(data, "init");
+        this.refreshItem(data, "init", play);
     };
-    ClickReadItem.prototype.refreshItem = function (data, str) {
+    ClickReadItem.prototype.refreshItem = function (data, str, play) {
         if (str === void 0) { str = "refresh"; }
+        if (play === void 0) { play = false; }
         for (var key in data) {
             if (this.enFont[key]) {
                 this.enFont[key] = data[key];
@@ -52,9 +54,9 @@ var ClickReadItem = (function (_super) {
             this.count += 1;
             this.trans.visible = ((this.count % 2) == 0);
         }
-        if (this.audio) {
+        if (this.audio && str != "init") {
             SoundManager.ins().stopEffect();
-            SoundManager.ins().playEffect("" + MP3_DIR + this.audio);
+            SoundManager.ins().playEffect("" + MP3_DIR + this.audio.toLocaleLowerCase());
         }
     };
     ClickReadItem.prototype.distory = function () {

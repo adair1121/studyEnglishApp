@@ -86,6 +86,7 @@
 		"bin-debug/game/config/LevelConfig.js",
 		"bin-debug/game/config/RecordConfig.js",
 		"bin-debug/game/config/TestResultDesc.js",
+		"bin-debug/game/module/ReadScene.js",
 		"bin-debug/game/module/RecordScene.js",
 		"bin-debug/game/module/SingleWordSelect.js",
 		"bin-debug/game/module/StartGameScene.js",

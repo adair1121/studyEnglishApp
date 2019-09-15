@@ -70,6 +70,8 @@ declare class GameLoadingUISkin extends eui.Skin{
 }
 declare class MainSceneSkin extends eui.Skin{
 }
+declare class ReadSceneSkin extends eui.Skin{
+}
 declare class RecordSceneSkin extends eui.Skin{
 }
 declare class SingleWordSelectSkin extends eui.Skin{

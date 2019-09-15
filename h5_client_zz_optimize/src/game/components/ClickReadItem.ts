@@ -27,12 +27,12 @@ class ClickReadItem extends BaseItemRender{
 			}
 		}
 	}
-	public initialize(data:any):void{
+	public initialize(data:any,play:boolean = true):void{
 		this.trans.visible = false;
 		this.count = 0;
-		this.refreshItem(data,"init");
+		this.refreshItem(data,"init",play);
 	}
-	public refreshItem(data:any,str:string = "refresh"):void{
+	public refreshItem(data:any,str:string = "refresh",play:boolean = false):void{
 		for(let key in data){
 			if(this.enFont[key]){
 				this.enFont[key] = data[key]
@@ -42,9 +42,9 @@ class ClickReadItem extends BaseItemRender{
 			this.count += 1;
 			this.trans.visible = ((this.count%2) == 0);
 		}
-		if(this.audio){
+		if(this.audio && str != "init"){
 			SoundManager.ins().stopEffect();
-			SoundManager.ins().playEffect(`${MP3_DIR}${this.audio}`)
+			SoundManager.ins().playEffect(`${MP3_DIR}${this.audio.toLocaleLowerCase()}`)
 		}
 		
 	}

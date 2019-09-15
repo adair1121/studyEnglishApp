@@ -37,7 +37,7 @@ var TeachMainScene = (function (_super) {
                 break;
             case this.yueduBtn:
                 //阅读训练
-                ViewManager.ins().open(WarnWin, { tips: "此功能暂未开放，敬请期待～" });
+                ViewManager.ins().open(ReadScene);
                 break;
             case this.bookBtn:
                 //课本点读背诵

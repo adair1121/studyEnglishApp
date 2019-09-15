@@ -19,6 +19,7 @@ class SoundEffects extends BaseSound {
 	 */
 	public play(effectName:string):void {
 		this._loaded = true;
+		this._sound = null;
 		this.getSound(effectName,(sound)=>{
 			if (sound) {
 				this._sound = sound;
@@ -31,8 +32,10 @@ class SoundEffects extends BaseSound {
 	 * @param effectName
 	 */
 	public stop():void {
+		this._sound = null;
 		if (this._soundChannel) {
 			this._soundChannel.stop();
+			this._soundChannel = null;
 		}
 	}
 	private _soundChannel:egret.SoundChannel

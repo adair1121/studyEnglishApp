@@ -85,7 +85,7 @@ var ClickRead = (function (_super) {
         var item = this.list.getChildAt(evt.itemIndex);
         if (this.selectIndex != -1 && this.selectIndex != evt.itemIndex) {
             var clickItem = this.list.getChildAt(this.selectIndex);
-            clickItem.initialize({ bold: false, size: 30 });
+            clickItem.initialize({ bold: false, size: 30 }, false);
         }
         this.selectIndex = evt.itemIndex;
         item.refreshItem({ bold: true, size: 40 });

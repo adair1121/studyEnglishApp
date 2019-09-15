@@ -29,6 +29,7 @@ var SoundEffects = (function (_super) {
     SoundEffects.prototype.play = function (effectName) {
         var _this = this;
         this._loaded = true;
+        this._sound = null;
         this.getSound(effectName, function (sound) {
             if (sound) {
                 _this._sound = sound;
@@ -41,8 +42,10 @@ var SoundEffects = (function (_super) {
      * @param effectName
      */
     SoundEffects.prototype.stop = function () {
+        this._sound = null;
         if (this._soundChannel) {
             this._soundChannel.stop();
+            this._soundChannel = null;
         }
     };
     /**

@@ -69,7 +69,7 @@ class ClickRead extends eui.Component{
 		let item:ClickReadItem = this.list.getChildAt(evt.itemIndex) as ClickReadItem;
 		if(this.selectIndex != -1 && this.selectIndex != evt.itemIndex){
 			let clickItem:ClickReadItem = this.list.getChildAt(this.selectIndex) as ClickReadItem;
-			clickItem.initialize({bold:false,size:30})
+			clickItem.initialize({bold:false,size:30},false)
 		}
 		this.selectIndex = evt.itemIndex;
 		item.refreshItem({bold:true,size:40});
